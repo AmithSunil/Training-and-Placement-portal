@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Sidebar from './components/Sidebar';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Drives from './components/Drives';
+import Profile from './components/Profile';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <div className="App">
+      <Sidebar />
+        <Routes>
+          <Route path="/" element={<Drives />} />
+          <Route path="/drives" element={<Drives />} />
+
+          <Route path="/profile" element={<Profile />} />
+           {/* <Route path="/upcoming" component={Upcoming}>
+           </Route> */}
+
+
+        </Routes>
     </div>
+      </Router>
   );
 }
 
