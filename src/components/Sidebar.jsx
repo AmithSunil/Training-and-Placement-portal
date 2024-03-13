@@ -5,11 +5,11 @@ import cx from "classnames";
 import './sidebar.css';
 
 const menuItems = [
-  { title: "Dashboard", icon:"" },
-  { title: "Users", icon: "" },
-  { title: "Cloud services", icon: "" },
-  { title: "Usage data", icon: "" },
-  { title: "Server list", icon: "" }
+  { title: "Drives", icon:"" },
+  { title: "Profile", icon: "" },
+  { title: "Notifications", icon: "" },
+  { title: "Applied drives", icon: "" },
+
 ];
 
 const Sidebar = () => {
