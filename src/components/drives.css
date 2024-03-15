@@ -1,6 +1,28 @@
+.drive-body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+
 .card{
-    width: 20rem;
+    width: 25rem;
     margin: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 20px;
+}
+
+.titleimg{
+    width:100%;
+    display: flex;
+}
+
+h6{
+    border: solid 1px #c9c9c9;
+    padding: 5px ;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(123, 123, 123, 0.2);
 }

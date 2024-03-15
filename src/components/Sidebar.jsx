@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import cx from "classnames";
-
+import { Link } from "react-router-dom";
 import './sidebar.css';
 
 const menuItems = [
@@ -31,7 +31,7 @@ const Sidebar = () => {
                 classNames={"fade"}
                 unmountOnExit
               >
-                <span>{item.title}</span>
+                <span><Link to={item.title}>{item.title}</Link></span>
               </CSSTransition>
             </div>
           </li>

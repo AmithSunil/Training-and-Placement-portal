@@ -38,6 +38,7 @@
     padding: 20px;
     color: white;
     transition: 0.4s ease-in;
+    height: 100%;
   }
   
   .sidebar-closed {

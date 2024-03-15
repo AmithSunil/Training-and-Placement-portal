@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import './login.css'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import "./login.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -15,19 +14,30 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  
+
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username,password)
-    navigate('/dashboard');
+    console.log(username, password);
+    navigate("/dashboard");
+
+    axios
+      .post("http://localhost:3001/login", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-
 
   return (
     <div className="signinbody">
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h3>Sign In</h3>
 
         <div className="mb-3">
@@ -48,7 +58,7 @@ const Login = () => {
             id="password"
             className="form-control"
             placeholder="Enter password"
-            onClick={handlePasswordChange}
+            onChange={handlePasswordChange}
           />
         </div>
 
@@ -66,11 +76,9 @@ const Login = () => {
         </div>
 
         <div className="d-grid">
-         
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
-     
         </div>
         <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
@@ -81,8 +89,6 @@ const Login = () => {
 };
 
 export default Login;
-
-
 
 // <h1>Login</h1>
 // <form onSubmit={handleSubmit}>
@@ -105,4 +111,3 @@ export default Login;
 //     />
 //   </div>
 //   <button type="submit">Login</button>
-  

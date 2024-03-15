@@ -12,9 +12,9 @@ const Dashboard = () => {
       <div className="dash-body">
       <Sidebar />
         <Routes>
-          <Route path="/" element={<Drives />} />
-          <Route path="/applieddrives" element={<AppliedDrives />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="drives" element={<Drives />} />
+          <Route path="applieddrives" element={<AppliedDrives />} />
+          <Route path="profile" element={<Profile />} />
           {/* <Route path="/upcoming" component={Upcoming}>
         </Route> */}
         </Routes>
