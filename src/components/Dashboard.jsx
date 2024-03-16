@@ -5,6 +5,7 @@ import Drives from './Drives';
 import AppliedDrives from './AppliedDrives';
 import Profile from './Profile';
 import './dashboard.css';
+import Notifications from './Notifications';
 
 
 const Dashboard = () => {
@@ -13,10 +14,9 @@ const Dashboard = () => {
       <Sidebar />
         <Routes>
           <Route path="drives" element={<Drives />} />
-          <Route path="applieddrives" element={<AppliedDrives />} />
+          <Route path="applied drives" element={<AppliedDrives />} />
           <Route path="profile" element={<Profile />} />
-          {/* <Route path="/upcoming" component={Upcoming}>
-        </Route> */}
+          <Route path="notifications" element={<Notifications />} /> 
         </Routes>
     </div>
  

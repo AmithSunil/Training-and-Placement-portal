@@ -7,3 +7,11 @@
   }
   
   
+  .title-body{
+    text-align: center;
+    margin: 0px;
+    padding: 1rem;
+    background-color: #dbdbdb;
+    box-shadow: 0 4px 8px 0 rgba(117, 117, 117, 0.2);
+
+}

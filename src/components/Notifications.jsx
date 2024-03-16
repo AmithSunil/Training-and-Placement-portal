@@ -1,55 +1,48 @@
 import React from 'react';
-import './drives.css';
-import DriveCard from './DriveCard';
+import './notifications.css';
 
-const Drives = () => {
+const Notifications = () => {
 
-    const drives =[
-
+    const notifications =[
         {
             title: 'TATA',
+            date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
-            job:'Software Developer',
-            package:'5 LPA'
-        },        
-        {  
-            
+
+        },
+        {
             title: 'WIPRO',
+            date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
-            job:'Software Developer',
-            package:'5 LPA'
-        },
-        {  
-            
+         },
+        {
             title: 'Blae',
+            date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
-            job:'Software Developer',
-            package:'5 LPA'
-        },
-        {  
-            
+         },
+        {
             title: 'Blae',
+            date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
-            job:'Software Developer',
-            package:'5 LPA'
-        }
-    ]
-        
+         }
+    ];
 
-
-    return( 
-    <div className='drive'>
-        <div className='title-body'>
-            <h1>DRIVES</h1>
+    return (
+        <div className='notifications-body'>
+            <div className='title-body'>
+                <h1>NOTIFICATIONS</h1>
+            </div>
+            <div className='notifications'>
+                {notifications.map((notification, index) => (
+                    <div key={index} className='notification'>
+                        <h2>{notification.title}</h2>
+                        <p>{notification.date}</p>
+                        <p>{notification.description}</p>
+                     </div>
+                ))}
+            </div>
         </div>
-        <div className='drive-body'>
-
-        {drives.map((drive, index) => {
-            return <DriveCard key={index} detail={drives[index]} />
-        })}
-        </div>
-    </div>
     );
-}
- 
-export default Drives;
+};
+
+export default Notifications;
