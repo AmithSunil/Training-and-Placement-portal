@@ -3,7 +3,7 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({user}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,10 +16,23 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    navigate("/dashboard");
+    
+    //setting user type
+
+    
+
+    if(username === "admin")
+      {
+        user("admin");
+        navigate("/dashboard/admin/create drives");
+      }
+    else
+    user("user");
+    navigate("/dashboard/drives");
 
     axios
       .post("http://localhost:3001/login", {
@@ -28,7 +41,7 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate("/dashboard");
+        navigate("/dashboard/Drives");
       })
       .catch((error) => {
         console.log(error);

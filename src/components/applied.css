@@ -21,5 +21,8 @@
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 85%;
     padding: 20px;
+
 }

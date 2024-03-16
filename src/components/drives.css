@@ -6,6 +6,8 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 20px;
+    overflow-y: scroll;
+    max-height: 85%;
 
 }
 

@@ -8,19 +8,29 @@ import './dashboard.css';
 import Notifications from './Notifications';
 
 
-const Dashboard = () => {
+const Dashboard = ({USER}) => {
   return (
-      <div className="dash-body">
-      <Sidebar />
-        <Routes>
-          <Route path="drives" element={<Drives />} />
-          <Route path="applied drives" element={<AppliedDrives />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="notifications" element={<Notifications />} /> 
-        </Routes>
+    <div className="dash-body">
+      <Sidebar user={USER} />
+      <Routes>
+        {USER === "user" && (
+          <>
+            <Route path="drives" element={<Drives />} />
+            <Route path="applied drives" element={<AppliedDrives />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="notifications" element={<Notifications />} /> 
+          </>
+        )}
+        {
+          USER === "admin" && (
+            <>
+              <Route path="create drive" element={<Drives />} />
+              <Route path="active drives" element={<AppliedDrives />} />
+         </> )
+        }
+
+      </Routes>
     </div>
- 
- 
   );
 };
 
