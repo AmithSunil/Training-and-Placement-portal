@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Drives from './Drives';
@@ -9,12 +9,11 @@ import Notifications from './Notifications';
 import CreateDrive from './CreateDrive';
 
 
-const Dashboard = ({USER}) => {
-  if (USER === "")
-  {
-    USER = "admin"
-  }
-  return (
+const Dashboard = ({}) => {
+
+  const USER = JSON.parse(localStorage.getItem("USER"));
+
+  return(
     <div className="dash-body">
       <Sidebar USER={USER} />
       <Routes>

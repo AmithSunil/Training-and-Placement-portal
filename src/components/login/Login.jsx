@@ -3,12 +3,13 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({user}) => {
+const Login = ({setuser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+    setuser(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -20,34 +21,29 @@ const Login = ({user}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    
+    localStorage.setItem("USER", JSON.stringify(username));
     //setting user type
-
     
-
     if(username === "admin")
       {
-        user("admin");
-        navigate("/dashboard/create drives");
+         navigate("/dashboard/create drives");
       }
     else{
-
-      user("user");
-      navigate("/dashboard/drives");
+       navigate("/dashboard/drives");
     }
 
-    axios
-      .post("http://localhost:3001/login", {
-        username: username,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        navigate("/dashboard/Drives");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  //   axios
+  //     .post("http://localhost:3001/login", {
+  //       username: username,
+  //       password: password,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       navigate("/dashboard/Drives");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
   };
 
   return (
