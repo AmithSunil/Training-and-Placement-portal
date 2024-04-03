@@ -26,7 +26,7 @@ const Login = ({setuser}) => {
     
     if(username === "admin")
       {
-         navigate("/dashboard/create drives");
+         navigate("/dashboard/create drive");
       }
     else{
        navigate("/dashboard/drives");
