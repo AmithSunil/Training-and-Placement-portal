@@ -4,5 +4,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  font-family: var(--main-font-2);
 }
+
 

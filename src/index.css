@@ -1,9 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+:root{
+  --main-font-2: "Helvetica Neue", Arial, sans-serif;
+  --main-font-1:"Roboto", sans-serif;
 }

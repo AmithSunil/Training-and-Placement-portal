@@ -1,0 +1,45 @@
+.createdrive {
+    text-align: center;
+ }
+
+.title-body {
+    background-color: #f2f2f2;
+}
+
+.title-body h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 400px;
+}
+
+.form-container label {
+    margin-bottom: 10px;;
+}
+
+.form-container input {
+    padding: 5px;
+    width: 200px;
+}
+
+.form-container button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}

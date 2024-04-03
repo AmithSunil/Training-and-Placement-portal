@@ -28,11 +28,13 @@ const Login = ({user}) => {
     if(username === "admin")
       {
         user("admin");
-        navigate("/dashboard/admin/create drives");
+        navigate("/dashboard/create drives");
       }
-    else
-    user("user");
-    navigate("/dashboard/drives");
+    else{
+
+      user("user");
+      navigate("/dashboard/drives");
+    }
 
     axios
       .post("http://localhost:3001/login", {

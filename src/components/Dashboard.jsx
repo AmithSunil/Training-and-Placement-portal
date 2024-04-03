@@ -6,12 +6,17 @@ import AppliedDrives from './AppliedDrives';
 import Profile from './Profile';
 import './dashboard.css';
 import Notifications from './Notifications';
+import CreateDrive from './CreateDrive';
 
 
 const Dashboard = ({USER}) => {
+  if (USER === "")
+  {
+    USER = "admin"
+  }
   return (
     <div className="dash-body">
-      <Sidebar user={USER} />
+      <Sidebar USER={USER} />
       <Routes>
         {USER === "user" && (
           <>
@@ -24,7 +29,7 @@ const Dashboard = ({USER}) => {
         {
           USER === "admin" && (
             <>
-              <Route path="create drive" element={<Drives />} />
+              <Route path="create drive" element={<CreateDrive />} />
               <Route path="active drives" element={<AppliedDrives />} />
          </> )
         }
