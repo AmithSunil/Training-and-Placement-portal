@@ -14,10 +14,14 @@ const DriveCard = ({ detail, buttonClicked }) => {
       <div className='card'>
         <div className='titleimg'>
           <img src={logo} alt="pic" style={{ width: 70 }} />
-          <h1>{detail.title}</h1>
+          <h1>{detail.name}</h1>
         </div>
-        <h6>JOB TITLE: {detail.job}</h6>
+        <h6>JOB TITLE: {detail.title}</h6>
         <h6>PACKAGE: {detail.package}</h6>
+        <h6>Location: {detail.location}</h6>
+        <h6>Skills: {detail.skills}</h6>
+
+
         <p>{detail.description}</p>
         <button type="button" className="btn btn-primary" onClick={handleClick}>Apply</button>
       </div>
