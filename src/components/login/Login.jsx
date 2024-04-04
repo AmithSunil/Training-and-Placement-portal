@@ -3,13 +3,12 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({setuser}) => {
+const Login = ({user}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    setuser(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -21,29 +20,34 @@ const Login = ({setuser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    localStorage.setItem("USER", JSON.stringify(username));
-    //setting user type
     
+    //setting user type
+
+    
+
     if(username === "admin")
       {
-         navigate("/dashboard/create drive");
+        user("admin");
+        navigate("/dashboard/create drives");
       }
     else{
-       navigate("/dashboard/drives");
+
+      user("user");
+      navigate("/dashboard/drives");
     }
 
-  //   axios
-  //     .post("http://localhost:3001/login", {
-  //       username: username,
-  //       password: password,
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //       navigate("/dashboard/Drives");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
+    axios
+      .post("http://localhost:3001/login", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/dashboard/Drives");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -84,6 +88,9 @@ const Login = ({setuser}) => {
               Remember me
             </label>
           </div>
+          <div className="forgot-pass">
+            <a href="#">Forgot password?</a>
+          </div>
         </div>
 
         <div className="d-grid">
@@ -91,9 +98,9 @@ const Login = ({setuser}) => {
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
+        {/* <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
-        </p>
+        </p> */}
       </form>
     </div>
   );
