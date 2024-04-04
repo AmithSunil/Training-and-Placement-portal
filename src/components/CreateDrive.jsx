@@ -21,7 +21,7 @@ function CreateDrive() {
 
     axios({
       method: "post",
-      url: "https://jsonplaceholder.org/posts",
+      url: "https://jsonplaceholder.org/",
       data: {
         driveName: driveName,
         jobPosition: jobPosition,
