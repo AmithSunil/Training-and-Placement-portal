@@ -1,7 +1,7 @@
 import './App.css';
 import Drives from './components/Drives';
 import Login from './components/login/Login';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dashboard';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
