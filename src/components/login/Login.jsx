@@ -3,7 +3,7 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({user}) => {
+const Login = ({setuser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,12 +27,12 @@ const Login = ({user}) => {
 
     if(username === "admin")
       {
-        user("admin");
+        setuser("admin");
         navigate("/dashboard/create drives");
       }
     else{
 
-      user("user");
+      setuser("user");
       navigate("/dashboard/drives");
     }
 
