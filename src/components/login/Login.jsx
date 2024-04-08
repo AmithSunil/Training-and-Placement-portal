@@ -20,7 +20,7 @@ const Login = ({setuser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    
+    window.localStorage.setItem("USER", JSON.stringify(username));
     //setting user type
 
     
@@ -28,7 +28,7 @@ const Login = ({setuser}) => {
     if(username === "admin")
       {
         setuser("admin");
-        navigate("/dashboard/create drives");
+        navigate("/dashboard/create drive");
       }
     else{
 
@@ -36,18 +36,18 @@ const Login = ({setuser}) => {
       navigate("/dashboard/drives");
     }
 
-    axios
-      .post("http://localhost:3001/login", {
-        username: username,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        navigate("/dashboard/Drives");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post("http://localhost:3001/login", {
+    //     username: username,
+    //     password: password,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     navigate("/dashboard/Drives");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
