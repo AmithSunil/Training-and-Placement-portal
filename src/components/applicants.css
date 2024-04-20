@@ -1,0 +1,25 @@
+.applicants-main{
+    display: flex;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    font-family: var(--main-font-1);
+    margin: 0rem 0rem;
+    width: 100%;
+}
+
+table{
+    border:  solid 2px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: solid 1px;
+}
