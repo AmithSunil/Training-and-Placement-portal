@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import "./applicants.css";
 
-function Applicants() {
+const Applicants = () => {
   const applicants = [
     { id: 1, first: "Mark", last: "Otto", handle: "@mdo" },
     { id: 2, first: "Jacob", last: "Thornton", handle: "@fat" },
@@ -10,9 +10,8 @@ function Applicants() {
 
   return (
     <div className="applicants-main">
- 
       <table className="table">
-        <thead>
+        <thead> 
           <tr>
             <th scope="col">Index</th>
             <th scope="col">Name</th>
@@ -33,6 +32,6 @@ function Applicants() {
       </table>
     </div>
   );
-}
+};
 
 export default Applicants;

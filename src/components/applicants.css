@@ -1,13 +1,13 @@
 .applicants-main{
     display: flex;
-    display: none;
-    flex-direction: column;
+     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 2rem;
     font-family: var(--main-font-1);
     margin: 0rem 0rem;
     width: 100%;
+    transition: all 1s;
 }
 
 table{
