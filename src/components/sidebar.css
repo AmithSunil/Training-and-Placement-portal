@@ -1,5 +1,5 @@
 .content {
-  padding: 40px 60px;
+  padding: 40px 60px;  
 }
 
 /* FADE ANIMATIONS */
@@ -33,12 +33,14 @@
 }
 
 .sidebar {
+  /* display:flex;
+  flex-direction: column; */
   min-width: 250px;
   background: rgb(28, 24, 107);
   padding: 20px;
   color: white;
   transition: 0.4s ease-in;
-  height: 100%;
+  height: 100vh;
 }
 /*  */
 .sidebar-closed {
@@ -65,3 +67,30 @@ ul {
   size: 10px;
 }
 
+.log-out{
+  display: flex;
+  padding-left: 10px;
+  margin-bottom: 0px;
+}
+
+.newdiv{
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.log-out-inner{
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  /* width: auto; */
+}
+
+.log-out-inner i{
+  font-size: 17px;
+}
+
+.log-out-inner label{
+  padding-left: 10px;
+}

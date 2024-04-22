@@ -80,10 +80,31 @@ function CreateDrive() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
+              <label>Drive date:</label>
+              <input
+                type="date"
+                placeholder="Last date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
               <label>Package:</label>
               <input
                 type="text"
                 placeholder="Package"
+                value={lpa}
+                onChange={(e) => setLpa(e.target.value)}
+              />
+              <label>Number of Backlogs:</label>
+              <input
+                type="text"
+                placeholder="Backlogs"
+                value={lpa}
+                onChange={(e) => setLpa(e.target.value)}
+              />
+              <label>Work Location:</label>
+              <input
+                type="text"
+                placeholder="Work Location"
                 value={lpa}
                 onChange={(e) => setLpa(e.target.value)}
               />
