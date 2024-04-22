@@ -80,23 +80,6 @@ const Login = ({setuser}) => {
             />
             <i className="bx bx-lock-alt"></i>
           </div>
-
-          <div className="mb-4">
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="customCheck1"
-              />
-              <label className="custom-control-label" htmlFor="customCheck1">
-                Remember me
-              </label>
-            </div>
-            <div className="forgot-pass">
-              <a href="#">Forgot password?</a>
-            </div>
-          </div>
-
           <div className="d-grid">
             <button type="submit" className="btn btn-primary">
               Submit
