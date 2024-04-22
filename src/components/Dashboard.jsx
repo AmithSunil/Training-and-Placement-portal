@@ -7,6 +7,8 @@ import Profile from './Profile';
 import './dashboard.css';
 import Notifications from './Notifications';
 import CreateDrive from './CreateDrive';
+import ActiveDrives from './ActiveDrives';
+import Applicants from './Applicants';
 
 
 const Dashboard = ({}) => {
@@ -23,13 +25,16 @@ const Dashboard = ({}) => {
             <Route path="applied drives" element={<AppliedDrives />} />
             <Route path="profile" element={<Profile />} />
             <Route path="notifications" element={<Notifications />} /> 
+            
           </>
         )}
         {
           USER === "admin" && (
             <>
+
               <Route path="create drive" element={<CreateDrive />} />
-              <Route path="active drives" element={<AppliedDrives />} />
+              <Route path="active drives" element={<ActiveDrives />} />
+              <Route path="applicants" element={<Applicants/>} />
          </> )
         }
 
