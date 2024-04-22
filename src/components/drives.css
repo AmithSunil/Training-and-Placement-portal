@@ -14,9 +14,11 @@
 
 .card{
     width: 25rem;
+    height: 550px;
     margin: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 20px;
+    border-radius: 20px;
 }
 
 .titleimg{
@@ -24,9 +26,29 @@
     display: flex;
 }
 
+.titleimg h1{
+    font-family: Arial, sans-serif ;
+    font-size: 25px;
+    height: 100%;
+}
+
 h6{
-    border: solid 1px #c9c9c9;
+    /* border: solid 1px #c9c9c9; */
     padding: 5px ;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px 0 rgba(123, 123, 123, 0.2);
+    /* box-shadow: 0 2px 2px 0 rgba(123, 123, 123, 0.2); */
+}
+p{
+    padding-left: 7px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.btn-primary{
+    width: 125px;
 }

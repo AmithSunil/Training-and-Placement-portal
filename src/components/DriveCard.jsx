@@ -23,7 +23,9 @@ const DriveCard = ({ detail, buttonClicked }) => {
 
 
         <p>{detail.description}</p>
-        <button type="button" className="btn btn-primary" onClick={handleClick}>Apply</button>
+        <div className="button">
+          <button type="button" className="btn btn-primary" onClick={handleClick}>Apply</button>
+        </div>
       </div>
     </div>
   );

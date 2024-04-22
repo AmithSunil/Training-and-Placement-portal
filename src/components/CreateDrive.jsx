@@ -57,41 +57,39 @@ function CreateDrive() {
           <h1>CREATE DRIVE</h1>
         </div>
         <div className="form-container">
-          <form onSubmit={handleSubmit}>
-            <label>
-              Drive Name:
+          <div className="form-box">
+            <form onSubmit={handleSubmit}>
+              <label>Company name:</label>
               <input
                 type="text"
+                placeholder="Company name"
                 value={driveName}
                 onChange={(e) => setDriveName(e.target.value)}
               />
-            </label>
-            <label>
-              Job Position:
+              <label>Job Position:</label>
               <input
                 type="text"
+                placeholder="Job Position"
                 value={jobPosition}
                 onChange={(e) => setJobPosition(e.target.value)}
               />
-            </label>
-            <label>
-              Date:
+              <label>Last date:</label>
               <input
                 type="date"
+                placeholder="Last date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
-            </label>
-            <label>
-              Package:
+              <label>Package:</label>
               <input
                 type="text"
+                placeholder="Package"
                 value={lpa}
                 onChange={(e) => setLpa(e.target.value)}
               />
-            </label>
-            <button type="submit">Submit</button>
-          </form>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
