@@ -2,17 +2,35 @@
 
     width: 100%;
     height: 100%;
-    margin: 1rem 0rem;
+    margin: 0rem 0rem;
 }
 
 
-.drive-card{
-    
+.drive-card{ 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #e0e0e0;   
     padding: 1.5rem;
     margin: 1rem 1rem;
-    border-radius: 8px;
+    border-radius: 15px;
     width: fit-content;
+}
+
+.drive-card h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: 500;
+    box-shadow: none;
+    padding-bottom:15px;
+    color: rgb(28, 24, 107);
+}
+
+.drive-card h6{
+    border: none;
+    box-shadow: none;
+    color: #000000;
+    font-weight: 600;
 }
 
 .applied-body{
@@ -23,6 +41,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     overflow-y: scroll;
+    height: 100vh;
     max-height: 85%;
     padding: 20px;
 

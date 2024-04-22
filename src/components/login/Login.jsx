@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "boxicons/css/boxicons.min.css";
 
-const Login = ({user}) => {
+const Login = ({ setuser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+    setuser(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -20,88 +22,81 @@ const Login = ({user}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    
+    localStorage.setItem("USER", JSON.stringify(username));
     //setting user type
 
-    
-
-    if(username === "admin")
-      {
-        user("admin");
-        navigate("/dashboard/create drives");
-      }
-    else{
-
-      user("user");
+    if (username === "admin") {
+      navigate("/dashboard/create drive");
+    } else {
       navigate("/dashboard/drives");
     }
 
-    axios
-      .post("http://localhost:3001/login", {
-        username: username,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        navigate("/dashboard/Drives");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //   axios
+    //     .post("http://localhost:3001/login", {
+    //       username: username,
+    //       password: password,
+    //     })
+    //     .then((response) => {
+    //       console.log(response);
+    //       navigate("/dashboard/Drives");
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
   };
 
   return (
-    <div className="signinbody">
-      <form onSubmit={handleSubmit}>
-        <h3>Sign In</h3>
-
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="text"
-            id="username"
-            className="form-control"
-            placeholder="Enter email"
-            onChange={handleUsernameChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            id="password"
-            className="form-control"
-            placeholder="Enter password"
-            onChange={handlePasswordChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
+    <div className="sign-in-main">
+      <div className="signinbody">
+        <form onSubmit={handleSubmit}>
+          <h3>Sign In</h3>
+          <div className="mb-3">
+            <label>Email address</label>
             <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
+              type="text"
+              id="username"
+              className="form-control"
+              placeholder="Enter email"
+              onChange={handleUsernameChange}
             />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
+            <i className="bx bx-user"></i>
           </div>
-          <div className="forgot-pass">
-            <a href="#">Forgot password?</a>
-          </div>
-        </div>
 
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </div>
-        {/* <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-        </p> */}
-      </form>
+          <div className="mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              className="form-control"
+              placeholder="Enter password"
+              onChange={handlePasswordChange}
+            />
+            <i className="bx bx-lock-alt"></i>
+          </div>
+
+          <div className="mb-4">
+            <div className="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                className="custom-control-input"
+                id="customCheck1"
+              />
+              <label className="custom-control-label" htmlFor="customCheck1">
+                Remember me
+              </label>
+            </div>
+            <div className="forgot-pass">
+              <a href="#">Forgot password?</a>
+            </div>
+          </div>
+
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
