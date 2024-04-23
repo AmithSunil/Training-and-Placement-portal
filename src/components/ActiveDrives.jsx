@@ -5,32 +5,52 @@ import Applicants from "./Applicants";
 import Modal from "react-bootstrap/Modal";
 
 const ActiveDrives = () => {
-  const [applied, setApplied] = useState([
+  const applied = [
     {
       id: 0,
-      title: "TATA",
-      position: "Engineer",
-      date: "",
+      title: "New Title 1",
+      position: "New Position 1",
+      package: 8,
+      lastdate: "01/01/2025",
+      drivedate: "01/02/2025",
+      cgpa: 9,
+      location: "New Location 1",
+      backlogs: 2,
     },
     {
       id: 1,
-      title: "WIPRO",
-      position: "Developer",
-      date: "25/2/24",
+      title: "New Title 2",
+      position: "New Position 2",
+      package: 9,
+      lastdate: "02/01/2025",
+      drivedate: "02/02/2025",
+      cgpa: 8,
+      location: "New Location 2",
+      backlogs: 3,
     },
     {
       id: 2,
-      title: "Blae",
-      position: "Tester",
-      date: "25/2/24",
+      title: "New Title 3",
+      position: "New Position 3",
+      package: 10,
+      lastdate: "03/01/2025",
+      drivedate: "03/02/2025",
+      cgpa: 7,
+      location: "New Location 3",
+      backlogs: 4,
     },
     {
       id: 3,
-      title: "Blae",
-      position: "Tester",
-      date: "25/2/24",
+      title: "New Title 4",
+      position: "New Position 4",
+      package: 11,
+      lastdate: "04/01/2025",
+      drivedate: "04/02/2025",
+      cgpa: 6,
+      location: "New Location 4",
+      backlogs: 5,
     },
-  ]);
+  ];
 
   const [latestID, setLatestID] = useState(0);
 
@@ -42,7 +62,11 @@ const ActiveDrives = () => {
         show: false,
         title: item.title,
         position: item.position,
-        date: item.date,
+        package: item.package,
+        location: item.location,
+        drivedate: item.drivedate,
+        backlogs: item.backlogs,
+        lastdate: item.lastdate,
       };
       return acc;
     }, {})
@@ -155,7 +179,12 @@ const ActiveDrives = () => {
               <h4>{drive.title}</h4>
               <div className="status"></div>
               <h6>Position: {drive.position}</h6>
-              <h6>Date: {drive.date}</h6>
+              <h6>Drive Date: {drive.drivedate}</h6>
+              <h6>Package: {drive.package} lpa</h6>
+              <h6>Location: {drive.location}</h6>
+              <h6>Backlogs: {drive.backlogs}</h6>
+              <h6>Last Date: {drive.lastdate}</h6>
+              <h6>Drive Date: {drive.drivedate}</h6>
 
               <div className="active-buttons">
                 <Button
@@ -213,10 +242,43 @@ const ActiveDrives = () => {
                 }))
               }
             />
+            <label>Package:</label>
+            <input
+              type="text"
+              value={showApplicantsBar.package}
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  package: e.target.value,
+                }))
+              }
+            />
+            <label>Location:</label>
+            <input
+              type="text"
+              value={showApplicantsBar.location}
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  location: e.target.value,
+                }))
+              }
+            />
+            <label>Backlogs allowed:</label>
+            <input
+              type="text"
+              value={showApplicantsBar.backlogs}
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  backlogs: e.target.value,
+                }))
+              }
+            />
           </div>
           <div className="edit-buttons">
             <Button
-            variant="secondary"
+              variant="secondary"
               onClick={() => {
                 setEditing(false);
               }}
