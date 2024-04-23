@@ -11,8 +11,8 @@ const ActiveDrives = () => {
       title: "New Title 1",
       position: "New Position 1",
       package: 8,
-      lastdate: "01/01/2025",
-      drivedate: "01/02/2025",
+      lastdate: "2000-01-20",
+      drivedate: "2025-01-01",
       cgpa: 9,
       location: "New Location 1",
       backlogs: 2,
@@ -274,6 +274,28 @@ const ActiveDrives = () => {
                   backlogs: e.target.value,
                 }))
               }
+            />
+            <label>Last date:</label>
+            <input
+              type="date"
+              value={showApplicantsBar.lastdate}
+              placeholder="Last date"
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  lastdate: e.target.value,
+                }))}
+            />
+            <label>Drive date:</label>
+            <input
+              type="date"
+              value={showApplicantsBar.drivedate}
+              placeholder="Last date"
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  drivedate: e.target.value,
+                }))}
             />
           </div>
           <div className="edit-buttons">
