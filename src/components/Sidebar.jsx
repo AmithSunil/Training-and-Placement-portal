@@ -15,6 +15,7 @@ const menuItems = [
 const menuItems2 = [
   { title: "create drive", icon: "" },
   { title: "active drives", icon: "" },
+  {title: "create notification", icon: ""},
 ];
 
 const Sidebar = ({ USER }) => {

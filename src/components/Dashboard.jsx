@@ -9,6 +9,7 @@ import Notifications from './Notifications';
 import CreateDrive from './CreateDrive';
 import ActiveDrives from './ActiveDrives';
 import Applicants from './Applicants';
+import CreateNotifications from './CreateNotifications';
 
 
 const Dashboard = ({}) => {
@@ -35,6 +36,8 @@ const Dashboard = ({}) => {
               <Route path="create drive" element={<CreateDrive />} />
               <Route path="active drives" element={<ActiveDrives />} />
               <Route path="applicants" element={<Applicants/>} />
+              <Route path="create notification" element={<CreateNotifications />} />
+
          </> )
         }
 
