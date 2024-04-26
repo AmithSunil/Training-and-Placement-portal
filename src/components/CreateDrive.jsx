@@ -4,38 +4,41 @@ import "./createdrive.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
+ 
 function CreateDrive() {
   const [driveName, setDriveName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
-  const [date, setDate] = useState("");
+  const [lastdate, setLastDate] = useState("");
   const [lpa, setLpa] = useState("");
+  const [drivedate, setDriveDate] = useState("");
+  const [backlogs, setBacklogs] = useState("");
+  const [backlogHistory, setBacklogHistory] = useState("");
+  const [workLocation, setWorkLocation] = useState("");
+  const [description,setDescription] = useState("")
+  const [skills,setSkills] =useState("");
+  const [gpaLimit,setGpaLimit] = useState("");
 
   const notify = (text) => toast(text);
 
   const handleSubmit = (e) => {
     notify("Drive Created Successfully!");
     e.preventDefault();
-    console.log(driveName, jobPosition, date, lpa);
-    // Handle form submission here
 
-    axios({
-      method: "post",
-      url: "https://jsonplaceholder.org/",
-      data: {
-        driveName: driveName,
-        jobPosition: jobPosition,
-        date: date,
-        lpa: lpa,
-      },
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    axios.post("http://localhost:3001/drive", {
+      name: driveName,
+      position: jobPosition,
+      lpa:lpa,
+      description:description,
+      lastdate:lastdate,
+      drivedate:drivedate,
+      backlogs:backlogs,
+      backlog_history: backlogHistory,
+      gpa_limit:gpaLimit,
+      location:workLocation,
+      skills:skills,      
+    // Handle form submission here
+  }).then(response=>{console.log(response)}).catch(error=>{console.log(error)});
+  }
 
   return (
     <div className="main">
@@ -77,15 +80,15 @@ function CreateDrive() {
               <input
                 type="date"
                 placeholder="Last date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                value={lastdate}
+                onChange={(e) => setLastDate(e.target.value)}
               />
               <label>Drive date:</label>
               <input
                 type="date"
                 placeholder="Last date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                value={drivedate}
+                onChange={(e) => setDriveDate(e.target.value)}
               />
               <label>Package:</label>
               <input
@@ -94,19 +97,49 @@ function CreateDrive() {
                 value={lpa}
                 onChange={(e) => setLpa(e.target.value)}
               />
+              <label>Skills Required:</label>
+              <input
+                type="text"
+                placeholder="Skills"
+                value={skills}
+                onChange={(e) => setSkills(e.target.value)}
+              />
+              <label>GPA Required:</label>
+              <input
+                type="text"
+                placeholder="GPA required"
+                value={gpaLimit}
+                onChange={(e) => setGpaLimit(e.target.value)}
+              />
               <label>Number of Backlogs:</label>
               <input
                 type="text"
                 placeholder="Backlogs"
-                value={lpa}
-                onChange={(e) => setLpa(e.target.value)}
+                value={backlogs}
+                onChange={(e) => setBacklogs(e.target.value)}
               />
+              <label>Backlog History</label>
+              <select
+                onChange={(e) => setBacklogHistory(e.target.value === "Yes")}
+                style={{ width: "100%", padding: "7px" ,marginBottom:"10px"}}
+              >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
               <label>Work Location:</label>
               <input
                 type="text"
                 placeholder="Work Location"
-                value={lpa}
-                onChange={(e) => setLpa(e.target.value)}
+                value={workLocation}
+                onChange={(e) => setWorkLocation(e.target.value)}
+              />
+              <label>Description:</label>
+              <textarea
+                type="textarea"
+                placeholder="Job description"
+                value={description}
+                rows="4"
+                onChange={(e) => setDescription(e.target.value)}
               />
               <button type="submit">Submit</button>
             </form>
