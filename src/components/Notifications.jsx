@@ -1,18 +1,19 @@
 import React, { useState,useEffect } from 'react';
 import './notifications.css';
+import axios from 'axios';
 
 const Notifications = () => {
 
-    // useEffect(() => {
-    //     axios
-    //       .get("https://660e2d256ddfa2943b35fefd.mockapi.io/DRIVE")
-    //       .then((response) => {
-    //         setDrives(response.data);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   }, []);
+    useEffect(() => {
+        axios
+          .get(`${process.env.REACT_APP_API_URL}/notifications/`)
+          .then((response) => {
+            // setNotifications(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, []);
 
 
     const [notifications,setNotifications] = useState([

@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import { Button } from 'react-bootstrap';
 
-const DriveCard = ({ detail, buttonClicked }) => {
+const DriveCard = ({ detail, buttonClicked,setApplied}) => {
 
   const handleClick = () => {
     buttonClicked(); // Call the function received from Drives component to show the modal
+    setApplied(detail.title); // Set the selected drive details to be shown in the modal
   };
 
   return (

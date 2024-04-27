@@ -4,7 +4,7 @@ import "./createdrive.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
- 
+
 function CreateDrive() {
   const [driveName, setDriveName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -12,11 +12,11 @@ function CreateDrive() {
   const [lpa, setLpa] = useState("");
   const [drivedate, setDriveDate] = useState("");
   const [backlogs, setBacklogs] = useState("");
-  const [backlogHistory, setBacklogHistory] = useState("");
+  const [backlogHistory, setBacklogHistory] = useState(true);
   const [workLocation, setWorkLocation] = useState("");
-  const [description,setDescription] = useState("")
-  const [skills,setSkills] =useState("");
-  const [gpaLimit,setGpaLimit] = useState("");
+  const [description, setDescription] = useState("");
+  const [skills, setSkills] = useState("");
+  const [gpaLimit, setGpaLimit] = useState("");
 
   const notify = (text) => toast(text);
 
@@ -24,21 +24,29 @@ function CreateDrive() {
     notify("Drive Created Successfully!");
     e.preventDefault();
 
-    axios.post("http://localhost:3001/drive", {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/drives/drive/`,
+      {
       name: driveName,
+      lpa: lpa,
+      description: description,
+      lastdate: lastdate,
+      drivedate: drivedate,
       position: jobPosition,
-      lpa:lpa,
-      description:description,
-      lastdate:lastdate,
-      drivedate:drivedate,
-      backlogs:backlogs,
-      backlog_history: backlogHistory,
-      gpa_limit:gpaLimit,
-      location:workLocation,
-      skills:skills,      
-    // Handle form submission here
-  }).then(response=>{console.log(response)}).catch(error=>{console.log(error)});
-  }
+      location: workLocation,
+      skills: skills,
+      gpa_limit: gpaLimit,
+      backlog_limit: backlogs,
+      backlog_history: backlogHistory
+      }
+      )
+      .then((response) => {
+      console.log(response);
+      })
+      .catch((error) => {
+      console.log(error);
+      });
+  };
 
   return (
     <div className="main">
@@ -56,10 +64,12 @@ function CreateDrive() {
       />
 
       <div className="createdrive">
-        <div className="title-body">
-          <h1>CREATE DRIVE</h1>
-        </div>
         <div className="form-container">
+          <br />
+          <br /> <br />
+          <br /> <br />
+          <br /> <br />
+          <br />
           <div className="form-box">
             <form onSubmit={handleSubmit}>
               <label>Company name:</label>
@@ -120,8 +130,17 @@ function CreateDrive() {
               />
               <label>Backlog History</label>
               <select
-                onChange={(e) => setBacklogHistory(e.target.value === "Yes")}
-                style={{ width: "100%", padding: "7px" ,marginBottom:"10px"}}
+                onChange={(e) => setBacklogHistory(()=>{
+
+                  if(e.target.value === "Yes"){
+                    return true
+                  }
+                  else
+                  return false
+                }
+                )
+                }
+                style={{ width: "100%", padding: "7px", marginBottom: "10px" }}
               >
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>

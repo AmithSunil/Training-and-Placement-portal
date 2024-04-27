@@ -7,31 +7,45 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 
-
 const Drives = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [show, setShow] = useState(false);
-
+  const [applied, setApplied] = useState("");
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [drives,setDrives] = useState([])
-  
- 
 
-    useEffect(() => {
-      axios
-      .get("https://tpc-backend.onrender.com/drives/drive")
-        .then((response) => {
-          // setDrives(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      }, []);
-    
+  const handleShow = () => {
+    axios
+      .post(`${apiUrl}/drives/drive/`, {
+        id: "2",
+        drive_id: applied,
+      })
+      .then((response) => {
+        setDrives(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
 
- 
+    setShow(true);
+  };
 
+  const [drives, setDrives] = useState([]);
+
+  useEffect(() => getDrives, []);
+
+  const getDrives = () => {
+    axios
+      .get(`${apiUrl}/drives/drive/`)
+      .then((response) => {
+        setDrives(response.data);
+        console.log(response.data);
+        console.log(apiUrl);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  };
 
   return (
     <div className="drive">
@@ -62,6 +76,7 @@ const Drives = () => {
               key={index}
               detail={drives[index]}
               buttonClicked={handleShow}
+              setApplied={setApplied}
             />
           );
         })}
@@ -71,8 +86,3 @@ const Drives = () => {
 };
 
 export default Drives;
-
-
-
-
- 
