@@ -24,6 +24,8 @@ const DriveCard = ({ detail, buttonClicked }) => {
         <h6>GPA Required: {detail.gpa_limit}</h6>
         <h6>Backlogs:{detail.backlog}</h6>
         <h6>Backlog history:{String(detail.backlog_history)}</h6>
+        <h6>Last date to Apply:{detail.lastdate}</h6>
+        <h6>Drive date:{detail.drivedate}</h6>
         <p>{detail.description}</p>
         <div className="button">
           <button type="button" className="btn btn-primary" onClick={handleClick}>Apply</button>

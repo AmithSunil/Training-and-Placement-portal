@@ -7,23 +7,28 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 
+
 const Drives = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [drives,setDrives] = useState([])
-   
+  
+ 
+
     useEffect(() => {
       axios
-        .get("https://660e2d256ddfa2943b35fefd.mockapi.io/DRIVE")
+      .get("https://tpc-backend.onrender.com/drives/drive")
         .then((response) => {
-          setDrives(response.data);
+          // setDrives(response.data);
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, []);
+      }, []);
+    
 
  
 
@@ -70,33 +75,4 @@ export default Drives;
 
 
 
-// [
-//   {
-//     title: "TATA",
-//     description:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!",
-//     job: "Software Developer",
-//     package: "5 LPA",
-//   },
-//   {
-//     title: "WIPRO",
-//     description:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!",
-//     job: "Software Developer",
-//     package: "5 LPA",
-//   },
-//   {
-//     title: "Blae",
-//     description:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!",
-//     job: "Software Developer",
-//     package: "5 LPA",
-//   },
-//   {
-//     title: "Blae",
-//     description:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!",
-//     job: "Software Developer",
-//     package: "5 LPA",
-//   },
-// ];
+ 

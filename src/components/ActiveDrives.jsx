@@ -5,6 +5,7 @@ import Applicants from "./Applicants";
 import Modal from "react-bootstrap/Modal";
 
 const ActiveDrives = () => {
+    
   const applied = [
     {
       id: 0,
@@ -16,39 +17,52 @@ const ActiveDrives = () => {
       cgpa: 9,
       location: "New Location 1",
       backlogs: 2,
+      backlog_history: true,
+      skills: "New Skills 1",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aut, animi eum in necessitatibus quas doloribus corrupti ratione magni commodi cumque nulla ipsum officiis accusantium impedit, soluta, tempore eaque. Iusto!",
+
     },
     {
-      id: 1,
-      title: "New Title 2",
-      position: "New Position 2",
-      package: 9,
-      lastdate: "02/01/2025",
-      drivedate: "02/02/2025",
-      cgpa: 8,
-      location: "New Location 2",
-      backlogs: 3,
+        id: 1,
+        title: "New Title 2",
+        position: "New Position 2",
+        package: 10,
+        lastdate: "2000-02-20",
+        drivedate: "2025-02-01",
+        cgpa: 8,
+        location: "New Location 2",
+        backlogs: 3,
+        backlog_history: false,
+        skills: "New Skills 2",
+        description: "New Description 2",
     },
     {
-      id: 2,
-      title: "New Title 3",
-      position: "New Position 3",
-      package: 10,
-      lastdate: "03/01/2025",
-      drivedate: "03/02/2025",
-      cgpa: 7,
-      location: "New Location 3",
-      backlogs: 4,
+        id: 2,
+        title: "New Title 3",
+        position: "New Position 3",
+        package: 12,
+        lastdate: "2000-03-20",
+        drivedate: "2025-03-01",
+        cgpa: 7,
+        location: "New Location 3",
+        backlogs: 1,
+        backlog_history: true,
+        skills: "New Skills 3",
+        description: "New Description 3",
     },
     {
-      id: 3,
-      title: "New Title 4",
-      position: "New Position 4",
-      package: 11,
-      lastdate: "04/01/2025",
-      drivedate: "04/02/2025",
-      cgpa: 6,
-      location: "New Location 4",
-      backlogs: 5,
+        id: 3,
+        title: "New Title 4",
+        position: "New Position 4",
+        package: 15,
+        lastdate: "2000-04-20",
+        drivedate: "2025-04-01",
+        cgpa: 9.5,
+        location: "New Location 4",
+        backlogs: 0,
+        backlog_history: false,
+        skills: "New Skills 4",
+        description: "New Description 4",
     },
   ];
 
@@ -66,7 +80,9 @@ const ActiveDrives = () => {
         location: item.location,
         drivedate: item.drivedate,
         backlogs: item.backlogs,
+        backlog_history: item.backlog_history,
         lastdate: item.lastdate,
+        description: item.description,
       };
       return acc;
     }, {})
@@ -138,7 +154,7 @@ const ActiveDrives = () => {
   };
 
   return (
-    <div className="main">
+    <div className="active-main">
       <>
         <Modal show={show}>
           <Modal.Header>
@@ -182,9 +198,12 @@ const ActiveDrives = () => {
               <h6>Drive Date: {drive.drivedate}</h6>
               <h6>Package: {drive.package} lpa</h6>
               <h6>Location: {drive.location}</h6>
+              <h6>Skills:{drive.skills}</h6>
               <h6>Backlogs: {drive.backlogs}</h6>
+              <h6>backlog History:{String(drive.backlog_history)}</h6>
               <h6>Last Date: {drive.lastdate}</h6>
               <h6>Drive Date: {drive.drivedate}</h6>
+              <h6>Description:{drive.description}</h6>
 
               <div className="active-buttons">
                 <Button
@@ -264,7 +283,7 @@ const ActiveDrives = () => {
                 }))
               }
             />
-            <label>Backlogs allowed:</label>
+            <label>Backlogs:</label>
             <input
               type="text"
               value={showApplicantsBar.backlogs}
@@ -275,6 +294,20 @@ const ActiveDrives = () => {
                 }))
               }
             />
+            <label>Backlogs allowed:</label>
+            <select
+              type="text"
+              value={showApplicantsBar.backlog_history}
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  backlog_history: e.target.value,
+                }))
+              }
+            >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
             <label>Last date:</label>
             <input
               type="date"
@@ -295,6 +328,18 @@ const ActiveDrives = () => {
                 setShowApplicantsBar((prevState) => ({
                   ...prevState,
                   drivedate: e.target.value,
+                }))}
+            />
+            <label>Description:</label>
+            <textarea
+              type="text"
+              rows="4"
+              value={showApplicantsBar.description}
+              placeholder="Description"
+              onChange={(e) =>
+                setShowApplicantsBar((prevState) => ({
+                  ...prevState,
+                  description: e.target.value,
                 }))}
             />
           </div>
