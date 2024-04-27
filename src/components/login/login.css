@@ -161,6 +161,9 @@ html,
 }
 
 .d-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 7px;
   width: auto;
 }
@@ -169,6 +172,9 @@ html,
   border-radius: 15px;
   font-size: 15px;
   font-weight: 500;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .sign-in-main{
