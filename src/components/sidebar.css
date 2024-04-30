@@ -84,6 +84,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center ;
+  cursor: pointer;
   /* width: auto; */
 }
 
@@ -93,4 +94,5 @@ ul {
 
 .log-out-inner label{
   padding-left: 10px;
+  cursor: pointer;
 }
