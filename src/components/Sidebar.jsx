@@ -80,6 +80,7 @@ const Sidebar = ({ USER }) => {
         </ul>
       )}
     </div>
+    <Link to="/" className="log-out"  style={{ textDecoration: "none", color: "white" }}>
     <div className="log-out">
         <CSSTransition
                   in={isOpen}
@@ -92,10 +93,11 @@ const Sidebar = ({ USER }) => {
           <i className='bx bxs-log-out'></i>
             <label>LOG OUT</label>
           </div>
-          
+        
         </CSSTransition>
 
     </div>
+    </Link>
   </div>
       </div>
   );

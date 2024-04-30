@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import { Button } from 'react-bootstrap';
 
-const DriveCard = ({ detail, buttonClicked }) => {
+const DriveCard = ({ detail, buttonClicked,setApplied}) => {
 
   const handleClick = () => {
     buttonClicked(); // Call the function received from Drives component to show the modal
+    setApplied(detail.title); // Set the selected drive details to be shown in the modal
   };
 
   return (
@@ -24,6 +25,8 @@ const DriveCard = ({ detail, buttonClicked }) => {
         <h6>GPA Required: {detail.gpa_limit}</h6>
         <h6>Backlogs:{detail.backlog}</h6>
         <h6>Backlog history:{String(detail.backlog_history)}</h6>
+        <h6>Last date to Apply:{detail.lastdate}</h6>
+        <h6>Drive date:{detail.drivedate}</h6>
         <p>{detail.description}</p>
         <div className="button">
           <button type="button" className="btn btn-primary" onClick={handleClick}>Apply</button>
