@@ -16,7 +16,7 @@ const Profile = () => {
    });
 
 
-  // axios.get('https://660e2d256ddfa2943b35fefd.mockapi.io/DRIVE')
+  // axios.get(`${process.env.REACT_APP_API}/user/admin`,{{username:}})
   //   .then((response) => {
   //     setProfile(response.data);
   //   })
@@ -76,7 +76,7 @@ const Profile = () => {
             value="Save Profile"
             onClick={handleSaveProfile}
           />
-          )}
+          )}  
         </div>
         </div>
         <div class="row-2">
@@ -89,13 +89,18 @@ const Profile = () => {
             {!editMode ? (
             <p>{profile.department}</p>
             ) : (
-            <input
-              type="text"
+              <select
               value={profile.department}
               onChange={(e) =>
-              setProfile({ ...profile, department: e.target.value })
+                setProfile({ ...profile, department: e.target.value })
               }
-            />
+            >
+              <option value="Computer Science Engineering">Computer Science Engineering</option>
+              <option value="Electronics And Communication">Electronics And Communication</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Electrical And Electronics Engineering">Electrical And Electronics Engineering</option>
+            </select>
+            
             )}
           </div>
           </div>

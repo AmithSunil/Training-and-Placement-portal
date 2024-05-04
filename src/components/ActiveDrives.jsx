@@ -4,15 +4,16 @@ import Button from "react-bootstrap/Button";
 import Applicants from "./Applicants";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notify = (text) => toast(text);
 
 const ActiveDrives = () => {
- 
-
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/drives/drive/`)
       .then((response) => {
- 
         console.log(response.data);
         setShowApplicants(
           response.data.reduce((acc, item) => {
@@ -39,9 +40,6 @@ const ActiveDrives = () => {
         // console.log(error);
       });
   }, []);
-
-   
-  
 
   const [latestID, setLatestID] = useState(0);
 
@@ -80,15 +78,21 @@ const ActiveDrives = () => {
 
   const makeEdit = () => {
     // Handle saving the edited drive
-    setShowApplicants(
-      Object.values(showApplicants).map((item) => {
-        if (item.drive_id === editedDrive) {
-          console.log(editedDrive);
-          return showApplicantsBar;
-        }
-        return item;
+
+    console.log(showApplicantsBar);
+
+    axios
+      .put(`${process.env.REACT_APP_API_URL}/drives/drive/`,showApplicantsBar)
+      .then((response) => {
+        console.log(response);
+        notify("User Updated Successfully!");
       })
-    );
+      .catch((error) => {
+        console.log(error);
+        notify("Error Updating User!");
+      });
+
+     
     setEditing(false);
   };
 
@@ -103,9 +107,27 @@ const ActiveDrives = () => {
     // Close the modal after closing the drive
 
     // Filter out the drive with the specified ID
+    axios
+    .delete(`${process.env.REACT_APP_API_URL}/drives/drive/`,
+    {
+      data: {
+          drive_id : latestID
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      notify("Drive Closing Successfully!");
+    })
+    .catch((error) => {
+      console.log(error);
+      notify("Error Closing Drive!");
+    });
+
+
     setShowApplicants((prevShowApplicants) => {
       const updatedShowApplicants = { ...prevShowApplicants };
       delete updatedShowApplicants[latestID];
+      console.log("ID",latestID)
       return updatedShowApplicants;
     });
 
@@ -115,6 +137,18 @@ const ActiveDrives = () => {
 
   return (
     <div className="active-main">
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <>
         <Modal show={show}>
           <Modal.Header>
@@ -146,7 +180,7 @@ const ActiveDrives = () => {
         </Modal>
       </>
       <div className="title-body">
-        <h1>ACTIVE DRIVES</h1>
+        <h1>CREATED DRIVES</h1>
       </div>
       {!editing && (
         <div className="active-body">
@@ -191,7 +225,9 @@ const ActiveDrives = () => {
               </div>
 
               {/* Check if the drive's applicants should be shown */}
-              {showApplicants[drive.drive_id]?.show && <Applicants key={drive.drive_id} />}
+              {showApplicants[drive.drive_id]?.show && (
+                <Applicants id={drive.drive_id} />
+              )}
             </div>
           ))}
         </div>

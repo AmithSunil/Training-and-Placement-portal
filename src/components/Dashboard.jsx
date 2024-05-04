@@ -36,7 +36,7 @@ const Dashboard = ({}) => {
             <>
 
               <Route path="create drive" element={<CreateDrive />} />
-              <Route path="active drives" element={<ActiveDrives />} />
+              <Route path="created drives" element={<ActiveDrives />} />
               <Route path="applicants" element={<Applicants/>} />
               <Route path="create notification" element={<CreateNotifications />} />
               <Route path="edit user" element={<EditUsers />} />

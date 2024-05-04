@@ -23,12 +23,11 @@ function CreateDrive() {
   const notify = (text) => toast(text);
 
   const handleSubmit = (e) => {
-    notify("Drive Created Successfully!");
     e.preventDefault();
-
+    
     axios
-      .post(`${process.env.REACT_APP_API_URL}/drives/drive/`,
-      {
+    .post(`${process.env.REACT_APP_API_URL}/drives/drive/`,
+    {
       name: driveName,
       lpa: lpa,
       description: description,
@@ -40,14 +39,17 @@ function CreateDrive() {
       gpa_limit: gpaLimit,
       backlog_limit: backlogs,
       backlog_history: backlogHistory
-      }
-      )
-      .then((response) => {
-      console.log(response);
+    }
+  )
+  .then((response) => {
+    console.log(response);
+    notify("Drive Created Successfully");
       })
       .catch((error) => {
       console.log(error);
-      });
+      notify("Drive Creation Failed");
+
+    });
   };
 
   return (
