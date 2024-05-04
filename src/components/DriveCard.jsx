@@ -17,7 +17,9 @@ const DriveCard = ({ detail, buttonClicked, setApplied }) => {
           <img src={logo} alt="pic" style={{ width: 70 }} />
           <h1>{detail.name}</h1>
         </div>
-        <h6>Company Name: {detail.name}</h6>
+ 
+        <div className='drivedetails'>
+ <h6>Company Name: {detail.name}</h6>
         <h6>Position: {detail.position}</h6>
         <h6>Package: {detail.lpa}</h6>
         <h6>Location: {detail.location}</h6>
@@ -31,14 +33,10 @@ const DriveCard = ({ detail, buttonClicked, setApplied }) => {
         <h6>Last date to Apply:{detail.lastdate}</h6>
         <h6>Drive date:{detail.drivedate}</h6>
         <p>{detail.description}</p>
+        </div>
         <div className="button">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={handleClick}
-          >
-            Apply
-          </button>
+          <button type="button" className="but" onClick={handleClick}>Apply</button>
+ 
         </div>
       </div>
     </div>
