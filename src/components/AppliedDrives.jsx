@@ -52,8 +52,7 @@ const AppliedDrives = () => {
             <h6>Position: {drive.position}</h6>
             <h6>Company Name: {drive.name}</h6>
             <div className="status"></div>
-            <h6>Status: {drive.status}</h6>
-            <h6>Drive Date: {drive.drivedate}</h6>
+             <h6>Drive Date: {drive.drivedate}</h6>
           </div>
         ))}
       </div>

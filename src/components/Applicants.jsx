@@ -1,12 +1,29 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useEffect } from "react";
 import "./applicants.css";
+import axios from "axios";
 
-const Applicants = () => {
-  const applicants = [
+const Applicants = (id) => {
+  const [applicants,setApplicants] = useState([
     { id: 1, first: "Mark", last: "Otto", handle: "@mdo" },
     { id: 2, first: "Jacob", last: "Thornton", handle: "@fat" },
     { id: 3, first: "Larry", last: "the Bird", handle: "@twitter" },
-  ];
+  ])
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/drives/drive/`, {
+        params: {
+          drive_id: id
+        }
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+ 
+      });
+  }, []);
+  
 
   return (
     <div className="applicants-main">
