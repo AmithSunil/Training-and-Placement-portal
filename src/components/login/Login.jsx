@@ -39,16 +39,16 @@ const Login = ({setuser}) => {
     }
 
     // axios
-    //   .post("http://localhost:3001/login", {
-    //     username: username,
-    //     password: password,
-    //   })
+    //   .get(`${process.env.REACT_APP_API_URL}/user/login/`,
+    //   {
+       
+    //   }
+    //   )
     //   .then((response) => {
-    //     console.log(response);
-    //     navigate("/dashboard/Drives");
+    //   console.log(response);
     //   })
     //   .catch((error) => {
-    //     console.log(error);
+    //   console.log(error);
     //   });
   };
 

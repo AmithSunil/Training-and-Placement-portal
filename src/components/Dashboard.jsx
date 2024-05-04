@@ -10,6 +10,8 @@ import CreateDrive from './CreateDrive';
 import ActiveDrives from './ActiveDrives';
 import Applicants from './Applicants';
 import CreateNotifications from './CreateNotifications';
+import EditUsers from './EditUser';
+import CreateUser from './CreateUser';
 
 
 const Dashboard = ({}) => {
@@ -37,6 +39,8 @@ const Dashboard = ({}) => {
               <Route path="active drives" element={<ActiveDrives />} />
               <Route path="applicants" element={<Applicants/>} />
               <Route path="create notification" element={<CreateNotifications />} />
+              <Route path="edit user" element={<EditUsers />} />
+              <Route path="create user" element={<CreateUser />} />
 
          </> )
         }

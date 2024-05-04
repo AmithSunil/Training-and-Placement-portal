@@ -1,0 +1,134 @@
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
+
+
+const notify = (text) => toast(text)
+
+ const CreateUser = () => {
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    first_name: "",
+    last_name: "",
+    made_password: "",
+    backlogs: 0,
+    gpa: 0,
+    backlog_history: true
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "first_name" || name === "last_name") {
+      // Generate username based on first name and last name
+      const username = (user.first_name + user.last_name).toLowerCase();
+      setUser({ ...user, [name]: value, username: username });
+    } else {
+      setUser({ ...user, [name]: value });
+    }
+  };
+
+
+  const handleSubmit = (e) => {
+     e.preventDefault();
+
+    console.log("Creating user:", user);
+    axios.post(`${process.env.REACT_APP_API_URL}/users/admin/create`, user)
+      .then((response) => {
+        notify("User Created Successfully!");
+        console.log("User created:", response.data);
+        // Reset user state after successful creation
+        setUser({
+          email: "",
+          first_name: "",
+          last_name: "",
+          made_password: "",
+          backlogs: 0,
+          gpa: 0,
+          backlog_history: true
+        });
+      })
+      .catch((error) => {
+        notify("Error creating user!");
+        console.error("Error creating user:", error);
+      });
+  };
+
+  return (
+    <div className="create-user-container">
+
+<ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <h2 className="create-user-heading">Create User</h2>
+      <form onSubmit={handleSubmit} className="create-user-form">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={user.email}
+          onChange={handleChange}
+        />
+        <label>First Name:</label>
+        <input
+          type="text"
+          name="first_name"
+          value={user.first_name}
+          onChange={handleChange}
+        />
+        <label>Last Name:</label>
+        <input
+          type="text"
+          name="last_name"
+          value={user.last_name}
+          onChange={handleChange}
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="made_password"
+          value={user.made_password}
+          onChange={handleChange}
+        />
+        <label>Backlogs:</label>
+        <input
+          type="number"
+          name="backlogs"
+          value={user.backlogs}
+          onChange={handleChange}
+        />
+        <label>GPA:</label>
+        <input
+          type="number"
+          name="gpa"
+          value={user.gpa}
+          onChange={handleChange}
+        />
+        <label>Backlog History:</label>
+        <select
+          name="backlog_history"
+          value={user.backlog_history}
+          onChange={handleChange}
+        >
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </select>
+        <Button type="submit">Create User</Button>
+      </form>
+    </div>
+  );
+};
+
+export default CreateUser;
