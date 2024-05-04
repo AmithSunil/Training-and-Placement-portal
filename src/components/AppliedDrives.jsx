@@ -44,7 +44,7 @@ const AppliedDrives = () => {
   return (
     <div className="main">
       <div className="title-body">
-        <h1>ACTIVE DRIVES</h1>
+        <h1>APPLIED DRIVES</h1>
       </div>
       <div className="applied-body">
         {applied.map((drive, index) => (
