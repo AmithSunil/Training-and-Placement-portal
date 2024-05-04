@@ -1,0 +1,52 @@
+.create-user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 100%;
+}
+
+.create-user-heading{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: x-large;
+    font-weight: 700;
+    color: #1c186b;
+}
+
+.create-user-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    padding: 50px;
+    width: 500px;
+    margin: 400px 100px 100px 100px;
+}
+
+.form-attributes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.attribute{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.attribute label{
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.attribute input{
+    width: 300px;
+}
