@@ -7,11 +7,11 @@
 
 
 .drive-card{ 
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #e0e0e0;   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;   
     padding: 1.5rem;
     margin: 1rem 1rem;
-    border-radius: 15px;
+    border-radius: 5px;
     width: fit-content;
 }
 
@@ -29,8 +29,13 @@
 .drive-card h6{
     border: none;
     box-shadow: none;
-    color: #000000;
+    color: #1c186b;
     font-weight: 600;
+}
+
+.title-body h1{
+    font-weight: 800;
+    color: #1c186b;
 }
 
 .applied-body{

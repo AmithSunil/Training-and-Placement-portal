@@ -19,23 +19,23 @@ const Notifications = () => {
     const [notifications,setNotifications] = useState([
         
         {
-            title: 'TATA',
+            title: 'Tata',
             date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
 
         },
         {
-            title: 'WIPRO',
+            title: 'Wipro',
             date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
          },
         {
-            title: 'Blae',
+            title: 'TCS',
             date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
          },
         {
-            title: 'Blae',
+            title: 'Infosys',
             date: '25/2/24',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi provident tempore deserunt saepe sed molestias vero enim debitis ipsa magni, adipisci amet sunt qui laborum veritatis rerum consequuntur labore itaque!',
          }
@@ -49,7 +49,7 @@ const Notifications = () => {
             <div className='notifications'>
                 {notifications.map((notification, index) => (
                     <div key={index} className='notification'>
-                        <h2>{notification.title}</h2>
+                        <h3>{notification.title}</h3>
                         <p>{notification.date}</p>
                         <p>{notification.description}</p>
                      </div>

@@ -41,7 +41,7 @@ const Profile = () => {
     };
 
     return (
-      <div class="container emp-profile">
+      <div class="emp-profile">
       <header>
         <link
         href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -53,14 +53,13 @@ const Profile = () => {
       </header>
       <form method="post">
         <div class="row-1">
-        <div class="col-md-4"></div>
         <div class="col-md-6">
           <div class="profile-head">
           <h5>{profile.name}</h5>
           <h6>{profile.role}</h6>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6">
           {!editMode ? (
           <input
             type="button"
@@ -84,7 +83,7 @@ const Profile = () => {
         <div class="tab-content profile-tab" id="myTabContent">
           <div class="row">
           <div class="col-md-6">
-            <label>Department</label>
+            <label>Department:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
@@ -102,7 +101,7 @@ const Profile = () => {
           </div>
           <div class="row">
           <div class="col-md-6">
-            <label>Batch</label>
+            <label>Batch:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
@@ -120,7 +119,7 @@ const Profile = () => {
           </div>
           <div class="row">
           <div class="col-md-6">
-            <label>CGPA</label>
+            <label>CGPA:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
@@ -138,7 +137,7 @@ const Profile = () => {
           </div>
           <div class="row">
           <div class="col-md-6">
-            <label>Email</label>
+            <label>Email:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
@@ -156,7 +155,7 @@ const Profile = () => {
           </div>
           <div class="row">
           <div class="col-md-6">
-            <label>Phone</label>
+            <label>Phone:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
