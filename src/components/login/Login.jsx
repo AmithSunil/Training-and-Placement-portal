@@ -3,14 +3,22 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "boxicons/css/boxicons.min.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({setuser}) => {
+
+const notify = (text) => toast(text);
+
+const Login = ({ }) => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const [result,setResult] = useState({});
+
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    setuser(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -22,26 +30,36 @@ const Login = ({setuser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    window.localStorage.setItem("USER", JSON.stringify(username));
     //setting user type
 
-    
-
-    if(username === "admin")
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/user/login/`,
       {
-        setuser("admin");
-        navigate("/dashboard/create drive");
+        email: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setResult(response.data.data);
+        notify("Login Successful");
+        window.localStorage.setItem("USER_ID", response.data.data.id);
+        if (result.is_superuser === true) {
+          navigate("/dashboard/create drive");
+        } else {
+        window.localStorage.setItem("USER", "user");
+        navigate("/dashboard/drives");
       }
-    else{
+      }).catch((error) => {
+        notify("Login Failed");
+        console.log(error);
+      });
 
-      setuser("user");
-      navigate("/dashboard/drives");
-    }
+      
 
     // axios
     //   .get(`${process.env.REACT_APP_API_URL}/user/login/`,
     //   {
-       
+
     //   }
     //   )
     //   .then((response) => {
@@ -54,6 +72,18 @@ const Login = ({setuser}) => {
 
   return (
     <div className="sign-in-main">
+            <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="signinbody">
         <form onSubmit={handleSubmit}>
           <h3>Sign In</h3>

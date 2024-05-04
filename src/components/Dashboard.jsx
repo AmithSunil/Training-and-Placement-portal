@@ -16,7 +16,7 @@ import CreateUser from './CreateUser';
 
 const Dashboard = ({}) => {
 
-  const USER = JSON.parse(localStorage.getItem("USER"));
+  const USER = localStorage.getItem("USER");
 
   return(
     <div className="dash-body">

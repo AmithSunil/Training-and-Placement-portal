@@ -11,41 +11,49 @@ const Drives = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [show, setShow] = useState(false);
   const [applied, setApplied] = useState("");
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    axios
+    .post(`${apiUrl}/drives/apply-drive/`, 
+    {
+      st_id : "ea3e6612-cba6-4197-8509-788b6706b521",
+      drive: "1bb07f0c-605c-436a-ace2-4d57ae1287b8"
+  })
+    .then((response) => {
+       console.log(response.data);
+    })
+    .catch((error) => {
+      // console.log(error);
+    });
+
+    setShow(false)
+  };
 
   const handleShow = () => {
-    axios
-      .post(`${apiUrl}/drives/drive/`, {
-        id: "2",
-        drive_id: applied,
-      })
-      .then((response) => {
-        setDrives(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // console.log(error);
-      });
-
+    
     setShow(true);
+
   };
 
   const [drives, setDrives] = useState([]);
 
-  useEffect(() => getDrives, []);
+ 
+  const [loading, setLoading] = useState(true);
 
-  const getDrives = () => {
-    axios
-      .get(`${apiUrl}/drives/drive/`)
+  useEffect(() => {
+    axios.get(`${apiUrl}/drives/drive/`)
       .then((response) => {
         setDrives(response.data);
-        console.log(response.data);
-        console.log(apiUrl);
+        setLoading(false);
       })
       .catch((error) => {
-        // console.log(error);
+        console.error("Error fetching drives:", error);
+        setLoading(false);
       });
-  };
+  }, [apiUrl]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="drive">
@@ -70,16 +78,17 @@ const Drives = () => {
         <h1>DRIVES</h1>
       </div>
       <div className="drive-body">
-        {drives.map((drive, index) => {
-          return (
+        {
+          drives.length === 1 ? null :
+          drives.map((drive, index) => (
             <DriveCard
               key={index}
               detail={drives[index]}
               buttonClicked={handleShow}
               setApplied={setApplied}
             />
-          );
-        })}
+          ))
+        }
       </div>
     </div>
   );

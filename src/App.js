@@ -6,12 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [USER, setuser] = useState("");
+ 
 
   return (
     <div className="app-body">
       <Routes>
-        <Route path="/" element={<Login setuser={setuser} />} />
+        <Route path="/" element={<Login   />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
       </Routes>
     </div>

@@ -27,17 +27,17 @@ const AppliedDrives = () => {
   ]);
 
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/drives/drive/`
-      )
-      .then((response) => {
-        setApplied(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.get(`${process.env.REACT_APP_API_URL}/drives/apply-drive`, {
+      params: {
+        st_id: window.localStorage.getItem("USER_ID")
+      }
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   }, []);
 
 
