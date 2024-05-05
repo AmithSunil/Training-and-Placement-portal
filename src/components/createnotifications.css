@@ -1,41 +1,56 @@
-.notification-form{
-    display: flex;
-    flex-direction: column;
-    width:90%;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    margin: 2rem;
-    border-radius: 12px;
-    padding: 2rem;
-}
-
-.notification-main,.notification-body{
+.notification-main{
     transition: all 1s;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
- 
 
-button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    
+.notifications-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-form{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 50px;
 }
 
 .notification-div{
-    margin: 1rem;
+    margin: 20px;
     display: flex;
-    flex-direction: column;
-
 }
+
+.notification-div label{
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #1c186b;
+}
+ 
+.notification-div input{
+    margin-left: 5px;
+    min-width: 250px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #1c186b;;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
 
 
  

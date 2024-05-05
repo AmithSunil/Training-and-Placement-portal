@@ -188,6 +188,7 @@ const ActiveDrives = () => {
             <div key={drive.drive_id} className="active-drive-card">
               <h4>{drive.name}</h4>
               <div className="status"></div>
+              <div className="details">
               <h6>Title: {drive.name}</h6>
               <h6>Position: {drive.position}</h6>
               <h6>Drive Date: {drive.drivedate}</h6>
@@ -199,6 +200,8 @@ const ActiveDrives = () => {
               <h6>Last Date: {drive.lastdate}</h6>
               <h6>Drive Date: {drive.drivedate}</h6>
               <h6>Description:{drive.description}</h6>
+              </div>
+              
 
               <div className="active-buttons">
                 <Button
