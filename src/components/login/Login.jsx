@@ -43,7 +43,9 @@ const Login = ({ }) => {
         setResult(response.data.data);
         notify("Login Successful");
         window.localStorage.setItem("USER_ID", response.data.data.id);
-        if (result.is_superuser === true) {
+        if (response.data.data.is_superuser === true) {
+          console.log("admin");
+          window.localStorage.setItem("USER", "admin");
           navigate("/dashboard/create drive");
         } else {
         window.localStorage.setItem("USER", "user");

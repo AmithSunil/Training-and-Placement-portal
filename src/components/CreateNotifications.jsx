@@ -15,22 +15,24 @@ const CreateNotifications = () => {
         // Handle form submission here
         
 
-        // axios({
-        //   method: "post",
-        //   url: "https://jsonplaceholder.org/",
-        //   data: {
-        //     subject: ,
-        //     content: ,
-        //   },
-        // })
-        //   .then((response) => {
-        //     console.log(response);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        axios
+        .post(`${process.env.REACT_APP_API_URL}/user/notication/`,
+        {
+          subject : subject,
+          message : description,
+          created_at : formattedDate,
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        // notify("Drive Created Successfully");
+          })
+          .catch((error) => {
+          console.log(error);
+          // notify("Drive Creation Failed");
+    
+        });
       };
-      
 
       const handleSubjectChange=(e)=>{
         setSubject(e.target.value);

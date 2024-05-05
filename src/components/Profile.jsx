@@ -9,10 +9,12 @@ const Profile = () => {
     name: "Kshiti Ghelani",
     role: "Student",
     department: "Computer Science",
-    batch: "D",
     cgpa: "5.4",
     email: "abcd@gmail.com",
     phone: "1234567890",
+    backlogs: "0",
+    backlog_history: false,
+    password : "12345678"
    });
 
 
@@ -83,6 +85,22 @@ const Profile = () => {
         <div class="tab-content profile-tab" id="myTabContent">
           <div class="row">
           <div class="col-md-6">
+            <label>Password:</label>
+          </div>
+          <div class="col-md-6">
+            {!editMode ? (
+            <p>{profile.password}</p>
+            ) : (
+            <input
+              type="text"
+              value={profile.password}
+              onChange={(e) =>
+              setProfile({ ...profile, password: e.target.value })
+              }
+            />
+            )}
+          </div>
+          <div class="col-md-6">
             <label>Department:</label>
           </div>
           <div class="col-md-6">
@@ -106,19 +124,38 @@ const Profile = () => {
           </div>
           <div class="row">
           <div class="col-md-6">
-            <label>Batch:</label>
+            <label>Backlogs:</label>
           </div>
           <div class="col-md-6">
             {!editMode ? (
-            <p>{profile.batch}</p>
+            <p>{profile.backlogs}</p>
             ) : (
             <input
               type="text"
-              value={profile.batch}
+              value={profile.backlogs}
               onChange={(e) =>
-              setProfile({ ...profile, batch: e.target.value })
+              setProfile({ ...profile, backologs: e.target.value })
               }
             />
+            )}
+          </div>
+          <div class="col-md-6">
+            <label>Backlog History:</label>
+          </div>
+          <div class="col-md-6">
+          {!editMode ? (
+            <p>{profile.backlog_history}</p>
+            ) : (
+              <select
+              value={(profile.backlog_history?"YES":"NO")}
+              onChange={(e) =>
+                setProfile({ ...profile, backlog_history: e.target.value })
+              }
+            >
+              <option value={true}>YES</option>
+              <option value={false}>NO</option>
+            </select>
+            
             )}
           </div>
           </div>
@@ -191,3 +228,21 @@ const Profile = () => {
 
 
 export default Profile;
+
+
+
+// "id": "ea3e6612-cba6-4197-8509-788b6706b521",
+//         "username": "Sunil",
+//         "email": "sunikuttan@gmail.com",
+//         "first_name": "suni",
+//         "last_name": "Sunil",
+//         "is_superuser": false,
+//         "last_login": "2024-05-04T15:07:45.643445Z",
+//         "made_password": "unda",
+//         "backlogs": 0,
+//         "gpa": 7.5,
+//         "backlog_history": true,
+//         "department": "CSE",
+//         "groups": [],
+//         "user_permissions": []
+    
