@@ -8,6 +8,7 @@
 
 .notifications-body{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -23,13 +24,19 @@
     padding: 50px;
 }
 
+.notification-form h2{
+    color: #1c186b;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
 .notification-div{
     margin: 20px;
     display: flex;
 }
 
 .notification-div label{
-    margin-right: 10px;
+    margin-right: 14px;
     font-size: 1rem;
     color: #1c186b;
 }
@@ -39,7 +46,7 @@
     min-width: 250px;
 }
 
-button[type="submit"] {
+.notification-button button {
     padding: 10px 20px;
     background-color: #1c186b;;
     color: #fff;

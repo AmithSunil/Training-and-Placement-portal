@@ -237,7 +237,7 @@ const ActiveDrives = () => {
       )}
       {editing && (
         <div className="edit-main">
-          <h1>EDIT</h1>
+          <h1>Edit Drive</h1>
           <div className="edit-text">
             <label>Title:</label>
             <input
@@ -347,14 +347,16 @@ const ActiveDrives = () => {
             />
           </div>
           <div className="edit-buttons">
+            <div className="edit-button-1">
             <Button
-              variant="secondary"
               onClick={() => {
                 setEditing(false);
               }}
             >
               Cancel
             </Button>
+            </div>
+            <div className="edit-button-2">
             <Button
               onClick={() => {
                 makeEdit();
@@ -362,6 +364,8 @@ const ActiveDrives = () => {
             >
               Save Changes
             </Button>
+            </div>
+            
           </div>
         </div>
       )}

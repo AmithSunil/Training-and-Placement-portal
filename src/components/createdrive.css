@@ -41,6 +41,14 @@
   
 }
 
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: xx-large;
+  font-weight: 700;
+  color: #1c186b;
+}
+
 .form-box label {
   text-align: start;
   margin-bottom: 5px;

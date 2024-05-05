@@ -141,7 +141,10 @@ const notify = (text) => toast(text)
         </select>
       </div>
       </div> 
-        <Button type="submit">Create User</Button>
+      <div className="create-user-button">
+      <Button type="submit">Create User</Button>
+      </div>
+        
       </form>
     </div>
   );
