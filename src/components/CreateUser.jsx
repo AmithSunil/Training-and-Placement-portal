@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-
+import './createuser.css';
 
 
 const notify = (text) => toast(text)
@@ -72,51 +72,65 @@ const notify = (text) => toast(text)
         pauseOnHover
         theme="light"
       />
-      <h2 className="create-user-heading">Create User</h2>
       <form onSubmit={handleSubmit} className="create-user-form">
+      <h2 className="create-user-heading">Create User</h2>
+      <div className="form-attributes">
+      <div className="attribute">
         <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-        />
-        <label>First Name:</label>
+          <input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+          />
+      </div>
+      <div className="attribute">
+      <label>First Name:</label>
         <input
           type="text"
           name="first_name"
           value={user.first_name}
           onChange={handleChange}
         />
-        <label>Last Name:</label>
+      </div>
+      <div className="attribute">
+      <label>Last Name:</label>
         <input
           type="text"
           name="last_name"
           value={user.last_name}
           onChange={handleChange}
         />
-        <label>Password:</label>
+      </div>
+      <div className="attribute">
+      <label>Password:</label>
         <input
           type="password"
           name="made_password"
           value={user.made_password}
           onChange={handleChange}
         />
+      </div> 
+      <div className="attribute">
         <label>Backlogs:</label>
-        <input
-          type="number"
-          name="backlogs"
-          value={user.backlogs}
-          onChange={handleChange}
-        />
-        <label>GPA:</label>
+          <input
+            type="number"
+            name="backlogs"
+            value={user.backlogs}
+            onChange={handleChange}
+          />
+      </div>
+      <div className="attribute">
+      <label>GPA:</label>
         <input
           type="number"
           name="gpa"
           value={user.gpa}
           onChange={handleChange}
         />
-        <label>Backlog History:</label>
+      </div>
+      <div className="attribute">
+      <label>Backlog History:</label>
         <select
           name="backlog_history"
           value={user.backlog_history}
@@ -125,6 +139,8 @@ const notify = (text) => toast(text)
           <option value={true}>Yes</option>
           <option value={false}>No</option>
         </select>
+      </div>
+      </div> 
         <Button type="submit">Create User</Button>
       </form>
     </div>

@@ -68,12 +68,8 @@ function CreateDrive() {
       />
 
       <div className="createdrive">
-        <div className="form-container">
-          <br />
-          <br /> <br />
-          <br /> <br />
-          <br /> <br />
-          <br />
+        
+         
           <div className="form-box">
             <form onSubmit={handleSubmit}>
               <label>Company name:</label>
@@ -159,7 +155,7 @@ function CreateDrive() {
               <label>Description:</label>
               <textarea
                 type="textarea"
-                placeholder="Job description"
+                placeholder=" Job description"
                 value={description}
                 rows="4"
                 onChange={(e) => setDescription(e.target.value)}
@@ -167,7 +163,7 @@ function CreateDrive() {
               <button type="submit">Submit</button>
             </form>
           </div>
-        </div>
+        
       </div>
     </div>
   );
