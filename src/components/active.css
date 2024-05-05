@@ -66,12 +66,41 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    margin: 10px;
-
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 50px;
+    margin: 20px 150px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 70%;
+    color: #1c186b;
+}
+
+.edit-main h1{
+    color: #1c186b;
+    font-weight: 700;
+}
+
+.edit-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.edit-text label{
+    font-weight: 600;
+    margin: 10px 0px;
+}
+
+.edit-text input{
+    height: 30px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.edit-text textarea{
+    padding: 5px;
 }
 
 .edit-buttons{
@@ -81,15 +110,30 @@
     width: 100%;
     margin-top: 10px;
 }
-.edit-text{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
+
+.edit-button-1 button{
+    background-color: #ffffff;
+    border: 1px solid #1c186b;
+    font-weight: 600;
+    color: #1c186b;
 }
 
-.edit-text input{
-    height: 30px;
-    padding: 7px;
+.edit-button-1 button:hover{
+    background-color: #1c186b;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.edit-button-2 button{
+    background-color: #1c186b;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.edit-button-2 button:hover{
+   
+    background-color: #ffffff;
+    border: 1px solid #1c186b;
+    font-weight: 600;
+    color: #1c186b;
 }
