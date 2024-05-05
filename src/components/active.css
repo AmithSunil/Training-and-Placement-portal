@@ -6,16 +6,6 @@
     overflow-y: scroll;
 }
 
-
-.active-drive-card{
-    
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 1rem;
-    margin: 1rem 1rem;
-    border-radius: 8px;
-    width: 80%;
-}
-
 .active-body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
@@ -24,18 +14,52 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     max-height: 85%;
-    padding: 10px;
+    padding: 30px;
 
+}
+.active-drive-card{
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 1rem 1rem;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.active-drive-card h4{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1c186b;
+    padding-left: 5px;
+    padding-bottom: 20px;
+}
+
+.details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1c186b;
 }
 
 .active-buttons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
+    width: 80%;
+    margin-top: 30px;
 }
 
+.active-buttons button{
+    background-color: #1c186b;
+    border: 2px solid #1c186b;
+}
+
+.active-buttons button:hover{
+    background-color: #ffffff;
+    color: #1c186b;
+    font-weight: 600;
+    border: 1px solid #1c186b;
+}
 
 .edit-main{
     display: flex;
