@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import axios  from 'axios';
-import createnotifications from './createnotifications.css';
+import './createnotifications.css';
 
 const CreateNotifications = () => {   
     
@@ -79,7 +79,9 @@ const CreateNotifications = () => {
                         <label htmlFor="content">Content:</label>
                         <textarea id="content" name="content" onChange={handleDescriptionChange} rows="4" cols="30"></textarea>
                     </div>
+                    <div className='notification-button'>
                     <button type="submit" onClick={handleSubmit}>Create Notification</button>
+                    </div>
                 </form>
             </div>
         

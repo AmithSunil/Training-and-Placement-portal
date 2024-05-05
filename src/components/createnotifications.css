@@ -46,7 +46,7 @@
     min-width: 250px;
 }
 
-button[type="submit"] {
+.notification-button button {
     padding: 10px 20px;
     background-color: #1c186b;;
     color: #fff;
