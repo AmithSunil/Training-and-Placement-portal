@@ -1,12 +1,15 @@
-.edit-users-container {
-    max-width: 400px;
-    margin: auto;
+.edit-users-container{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 100%;    
+    /* margin: 200px 10px 10px 10px; */
+}
   
   .edit-users-heading {
     text-align: center;
@@ -14,6 +17,29 @@
     font-size: x-large;
     font-weight: 700;
     color: #1c186b;
+  }
+
+  .edit-form {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow:  0 0 10px 0 rgba(0,0,0,0.1);
+    margin-top: 200px;
+  }
+
+  .edit-form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .edit-form label, .edit-form select{
+    margin-bottom: 10px;
   }
   
   .search-bar {
@@ -30,10 +56,11 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 16px;
-    margin: 10px 0px 20px 0px;
+    margin: 10px 0px 10px 0px;
   }
   
-  .search-button {
+  .search-button, .edit-user-form-buttons button {
+    margin-top: 20px;
     margin-left: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -45,7 +72,7 @@
     /* transition: background-color 0.3s ease; */
   }
   
-  .search-button:hover {
+  .search-button:hover, .edit-user-form-buttons button:hover {
     border: 1px solid #1c186b;
     background-color: #fff;
     color: #1c186b;
@@ -53,4 +80,5 @@
   }
   
   /* Add more styles for form fields if needed */
+
   
