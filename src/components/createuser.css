@@ -51,11 +51,11 @@
     width: 300px;
 }
 
-button[type="submit"]{
+.create-user-button{
     margin: 0;
 }
 
-button[type="submit"]:hover{
+.create-user-button button:hover{
     border: #1c186b 1px solid;
     background-color: #ffffff;
     color: #1c186b;

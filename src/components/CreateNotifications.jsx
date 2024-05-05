@@ -69,6 +69,7 @@ const CreateNotifications = () => {
           />
             <div className="notifications-body">
                 <form className="notification-form">
+                    <h2>Create Notification</h2>
                     <div className="notification-div">
                         <label htmlFor="subject">Subject:</label>
                         <input type="text" id="subject" name="subject" onChange={handleSubjectChange}

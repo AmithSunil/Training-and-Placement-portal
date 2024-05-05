@@ -72,6 +72,7 @@ function CreateDrive() {
          
           <div className="form-box">
             <form onSubmit={handleSubmit}>
+            <h2>Create Drive</h2>
               <label>Company name:</label>
               <input
                 type="text"
