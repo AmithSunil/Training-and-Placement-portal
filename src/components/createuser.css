@@ -50,3 +50,14 @@
 .attribute input{
     width: 300px;
 }
+
+button[type="submit"]{
+    margin: 0;
+}
+
+button[type="submit"]:hover{
+    border: #1c186b 1px solid;
+    background-color: #ffffff;
+    color: #1c186b;
+    font-weight: 600;
+}
