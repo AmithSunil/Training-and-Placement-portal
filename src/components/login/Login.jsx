@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const notify = (text) => toast(text);
 
-const Login = ({ }) => {
+const Login = ({ setProfile}) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +42,7 @@ const Login = ({ }) => {
         console.log(response.data.data);
         setResult(response.data.data);
         notify("Login Successful");
+        window.localStorage.setItem("PROFILE",JSON.stringify(response.data.data));
         window.localStorage.setItem("USER_ID", response.data.data.id);
         if (response.data.data.is_superuser === true) {
           console.log("admin");

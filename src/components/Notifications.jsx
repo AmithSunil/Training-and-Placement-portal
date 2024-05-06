@@ -6,9 +6,10 @@ const Notifications = () => {
 
     useEffect(() => {
         axios
-          .get(`${process.env.REACT_APP_API_URL}/notifications/`)
+          .get(`${process.env.REACT_APP_API_URL}/user/notification/`)
           .then((response) => {
-            // setNotifications(response.data);
+            setNotifications(response.data);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);
@@ -49,9 +50,9 @@ const Notifications = () => {
             <div className='notifications'>
                 {notifications.map((notification, index) => (
                     <div key={index} className='notification'>
-                        <h3>{notification.title}</h3>
-                        <p>{notification.date}</p>
-                        <p>{notification.description}</p>
+                        <h3>{notification.subjects}</h3>
+                        <p>{notification.created_at}</p>
+                        <p>{notification.message}</p>
                      </div>
                 ))}
             </div>

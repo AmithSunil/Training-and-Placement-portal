@@ -16,12 +16,12 @@ const CreateNotifications = () => {
         
 
         axios
-        .post(`${process.env.REACT_APP_API_URL}/user/notication/`,
+        .post(`${process.env.REACT_APP_API_URL}/user/notification/`,
         {
-          subject : subject,
-          message : description,
-          created_at : formattedDate,
-        }
+          message: description,
+          created_at: formattedDate,
+          subjects: subject
+      }
       )
       .then((response) => {
         console.log(response);

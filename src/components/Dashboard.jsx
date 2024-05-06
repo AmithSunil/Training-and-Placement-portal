@@ -14,7 +14,7 @@ import EditUsers from './EditUser';
 import CreateUser from './CreateUser';
 
 
-const Dashboard = ({}) => {
+const Dashboard = ({profile}) => {
 
   const USER = localStorage.getItem("USER");
 
@@ -26,7 +26,7 @@ const Dashboard = ({}) => {
           <>
             <Route path="drives" element={<Drives />} />
             <Route path="applied drives" element={<AppliedDrives />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<Profile profile={profile}/>} />
             <Route path="notifications" element={<Notifications />} /> 
             
           </>

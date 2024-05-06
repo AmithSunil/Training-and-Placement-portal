@@ -10,11 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 const notify = (text) => toast(text);
 
 const ActiveDrives = () => {
+  
+  const [editing, setEditing] = useState(false);
+  
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/drives/drive/`)
-      .then((response) => {
-        console.log(response.data);
+    .get(`${process.env.REACT_APP_API_URL}/drives/drive/`)
+    .then((response) => {
+      console.log(response.data);
         setShowApplicants(
           response.data.reduce((acc, item) => {
             acc[item.drive_id] = {
@@ -31,6 +34,7 @@ const ActiveDrives = () => {
               lastdate: item.lastdate,
               drivedate: item.drivedate,
               description: item.description,
+              is_active: item.is_active,
             };
             return acc;
           }, {})
@@ -39,7 +43,7 @@ const ActiveDrives = () => {
       .catch((error) => {
         // console.log(error);
       });
-  }, []);
+  }, [editing]);
 
   const [latestID, setLatestID] = useState(0);
 
@@ -64,25 +68,31 @@ const ActiveDrives = () => {
     setShow(false);
   };
 
-  const [editing, setEditing] = useState(false);
 
   const editDrive = (driveID) => {
     setEditedDrive(driveID);
-    // Handle editing the drive
-    setShowApplicantsBar(
-      Object.values(showApplicants).find((item) => item.drive_id === driveID)
+
+    // Find the drive in showApplicants and set it to showApplicantsBar
+    const drive = Object.values(showApplicants).find(
+      (item) => item.drive_id === driveID
     );
-    console.log(showApplicantsBar);
-    setEditing(true);
+    if (drive) {
+      setShowApplicantsBar({ ...drive, drive_id: driveID }); // Add drive_id to showApplicantsBar
+      console.log(showApplicantsBar);
+      setEditing(true);
+    }
   };
 
   const makeEdit = () => {
     // Handle saving the edited drive
 
-    console.log(showApplicantsBar);
+    console.log(showApplicantsBar, "ONLY ONEEE");
 
     axios
-      .put(`${process.env.REACT_APP_API_URL}/drives/drive/`,showApplicantsBar)
+      .patch(
+        `${process.env.REACT_APP_API_URL}/drives/drive/`,
+        showApplicantsBar
+      )
       .then((response) => {
         console.log(response);
         notify("User Updated Successfully!");
@@ -92,7 +102,6 @@ const ActiveDrives = () => {
         notify("Error Updating User!");
       });
 
-     
     setEditing(false);
   };
 
@@ -108,26 +117,24 @@ const ActiveDrives = () => {
 
     // Filter out the drive with the specified ID
     axios
-    .delete(`${process.env.REACT_APP_API_URL}/drives/drive/`,
-    {
-      data: {
-          drive_id : latestID
-      }
-    })
-    .then((response) => {
-      console.log(response);
-      notify("Drive Closing Successfully!");
-    })
-    .catch((error) => {
-      console.log(error);
-      notify("Error Closing Drive!");
-    });
-
+      .delete(`${process.env.REACT_APP_API_URL}/drives/drive/`, {
+        data: {
+          drive_id: latestID,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        notify("Drive Closed Successfully!");
+      })
+      .catch((error) => {
+        console.log(error);
+        notify("Error Closing Drive!");
+      });
 
     setShowApplicants((prevShowApplicants) => {
       const updatedShowApplicants = { ...prevShowApplicants };
       delete updatedShowApplicants[latestID];
-      console.log("ID",latestID)
+      console.log("ID", latestID);
       return updatedShowApplicants;
     });
 
@@ -189,19 +196,18 @@ const ActiveDrives = () => {
               <h4>{drive.name}</h4>
               <div className="status"></div>
               <div className="details">
-              <h6>Title: {drive.name}</h6>
-              <h6>Position: {drive.position}</h6>
-              <h6>Drive Date: {drive.drivedate}</h6>
-              <h6>Package: {drive.lpa} lpa</h6>
-              <h6>Location: {drive.location}</h6>
-              <h6>Skills:{drive.skills}</h6>
-              <h6>Backlogs: {drive.backlog_limit}</h6>
-              <h6>backlog_limit History:{String(drive.backlog_history)}</h6>
-              <h6>Last Date: {drive.lastdate}</h6>
-              <h6>Drive Date: {drive.drivedate}</h6>
-              <h6>Description:{drive.description}</h6>
+                <h6>Title: {drive.name}</h6>
+                <h6>Position: {drive.position}</h6>
+                <h6>Drive Date: {drive.drivedate}</h6>
+                <h6>Package: {drive.lpa} lpa</h6>
+                <h6>Location: {drive.location}</h6>
+                <h6>Skills:{drive.skills}</h6>
+                <h6>Backlogs Allowed: {drive.backlog_limit}</h6>
+                <h6>Backlog History:{drive.backlog_history? "Yes":"No"}</h6>
+                <h6>Last Date: {drive.lastdate}</h6>
+                <h6>Drive Date: {drive.drivedate}</h6>
+                <h6>Description:{drive.description}</h6>
               </div>
-              
 
               <div className="active-buttons">
                 <Button
@@ -283,7 +289,7 @@ const ActiveDrives = () => {
                 }))
               }
             />
-            <label>Backlogs:</label>
+            <label>Backlog Limit:</label>
             <input
               type="text"
               value={showApplicantsBar.backlog_limit}
@@ -346,26 +352,38 @@ const ActiveDrives = () => {
               }
             />
           </div>
+          <label>Active:</label>
+          <select
+            value={showApplicantsBar.is_active}
+            onChange={(e) =>
+              setShowApplicantsBar((prevState) => ({
+                ...prevState,
+                is_active: e.target.value,
+              }))
+            }
+          >
+            <option value={true}>Active</option>
+            <option value={false}>Inactive</option>
+          </select>
           <div className="edit-buttons">
             <div className="edit-button-1">
-            <Button
-              onClick={() => {
-                setEditing(false);
-              }}
-            >
-              Cancel
-            </Button>
+              <Button
+                onClick={() => {
+                  setEditing(false);
+                }}
+              >
+                Cancel
+              </Button>
             </div>
             <div className="edit-button-2">
-            <Button
-              onClick={() => {
-                makeEdit();
-              }}
-            >
-              Save Changes
-            </Button>
+              <Button
+                onClick={() => {
+                  makeEdit();
+                }}
+              >
+                Save Changes
+              </Button>
             </div>
-            
           </div>
         </div>
       )}

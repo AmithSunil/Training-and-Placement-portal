@@ -8,11 +8,13 @@ import { useState, useEffect } from "react";
 function App() {
  
 
+  const [profile,setProfile] = useState({});
+
   return (
     <div className="app-body">
       <Routes>
-        <Route path="/" element={<Login   />} />
-        <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/" element={<Login setProfile={setProfile}  />} />
+        <Route path="/dashboard/*" element={<Dashboard profile={profile} />} />
       </Routes>
     </div>
   );

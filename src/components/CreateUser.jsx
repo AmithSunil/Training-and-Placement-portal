@@ -3,12 +3,11 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import './createuser.css';
+import "./createuser.css";
 
+const notify = (text) => toast(text);
 
-const notify = (text) => toast(text)
-
- const CreateUser = () => {
+const CreateUser = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -17,7 +16,7 @@ const notify = (text) => toast(text)
     made_password: "",
     backlogs: 0,
     gpa: 0,
-    backlog_history: true
+    backlog_history: true,
   });
 
   const handleChange = (e) => {
@@ -31,12 +30,12 @@ const notify = (text) => toast(text)
     }
   };
 
-
   const handleSubmit = (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     console.log("Creating user:", user);
-    axios.post(`${process.env.REACT_APP_API_URL}/users/admin/create`, user)
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/admin/create`, user)
       .then((response) => {
         notify("User Created Successfully!");
         console.log("User created:", response.data);
@@ -47,8 +46,9 @@ const notify = (text) => toast(text)
           last_name: "",
           made_password: "",
           backlogs: 0,
+          department: "",
           gpa: 0,
-          backlog_history: true
+          backlog_history: true,
         });
       })
       .catch((error) => {
@@ -59,8 +59,7 @@ const notify = (text) => toast(text)
 
   return (
     <div className="create-user-container">
-
-<ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={1000}
         hideProgressBar
@@ -73,78 +72,94 @@ const notify = (text) => toast(text)
         theme="light"
       />
       <form onSubmit={handleSubmit} className="create-user-form">
-      <h2 className="create-user-heading">Create User</h2>
-      <div className="form-attributes">
-      <div className="attribute">
-        <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-          />
-      </div>
-      <div className="attribute">
-      <label>First Name:</label>
-        <input
-          type="text"
-          name="first_name"
-          value={user.first_name}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="attribute">
-      <label>Last Name:</label>
-        <input
-          type="text"
-          name="last_name"
-          value={user.last_name}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="attribute">
-      <label>Password:</label>
-        <input
-          type="password"
-          name="made_password"
-          value={user.made_password}
-          onChange={handleChange}
-        />
-      </div> 
-      <div className="attribute">
-        <label>Backlogs:</label>
-          <input
-            type="number"
-            name="backlogs"
-            value={user.backlogs}
-            onChange={handleChange}
-          />
-      </div>
-      <div className="attribute">
-      <label>GPA:</label>
-        <input
-          type="number"
-          name="gpa"
-          value={user.gpa}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="attribute">
-      <label>Backlog History:</label>
-        <select
-          name="backlog_history"
-          value={user.backlog_history}
-          onChange={handleChange}
-        >
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
-        </select>
-      </div>
-      </div> 
-      <div className="create-user-button">
-      <Button type="submit">Create User</Button>
-      </div>
-        
+        <h2 className="create-user-heading">Create User</h2>
+        <div className="form-attributes">
+          <div className="attribute">
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>First Name:</label>
+            <input
+              type="text"
+              name="first_name"
+              value={user.first_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>Last Name:</label>
+            <input
+              type="text"
+              name="last_name"
+              value={user.last_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>Password:</label>
+            <input
+              type="password"
+              name="made_password"
+              value={user.made_password}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>Backlogs:</label>
+            <input
+              type="number"
+              name="backlogs"
+              value={user.backlogs}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>Department:</label>
+            <select value={user.department} onChange={handleChange}>
+              <option value="Computer Science Engineering">
+                Computer Science Engineering
+              </option>
+              <option value="Electronics And Communication">
+                Electronics And Communication
+              </option>
+              <option value="Mechanical Engineering">
+                Mechanical Engineering
+              </option>
+              <option value="Electrical And Electronics Engineering">
+                Electrical And Electronics Engineering
+              </option>
+            </select>
+          </div>
+          <div className="attribute">
+            <label>GPA:</label>
+            <input
+              type="number"
+              name="gpa"
+              value={user.gpa}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="attribute">
+            <label>Backlog History:</label>
+            <select
+              name="backlog_history"
+              value={user.backlog_history}
+              onChange={handleChange}
+            >
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
+          </div>
+        </div>
+        <div className="create-user-button">
+          <Button type="submit">Create User</Button>
+        </div>
       </form>
     </div>
   );
