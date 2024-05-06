@@ -3,43 +3,38 @@ import "./applied.css";
 import axios from "axios";
 
 const AppliedDrives = () => {
-  const [applied, setApplied] = useState([
-    {
-      title: "TATA",
-      status: "Passed onto Round 2",
-      date: "25/2/24",
-    },
-    {
-      title: "WIPRO",
-      status: "Passed onto Round 2",
-      date: "25/2/24",
-    },
-    {
-      title: "Blae",
-      status: "Passed onto Round 2",
-      date: "25/2/24",
-    },
-    {
-      title: "Blae",
-      status: "Passed onto Round 2",
-      date: "25/2/24",
-    },
-  ]);
+  const [applied, setApplied] = useState([]);
+  const [appliedDrives, setAppliedDrives] = useState([]);
+  const [drivelist, setdrivelist] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/drives/apply-drive`, {
-      params: {
-        st_id: window.localStorage.getItem("USER_ID")
-      }
+    axios.get(`${process.env.REACT_APP_API_URL}/drives/drive/`)
+      .then((response) => {
+        setdrivelist(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    axios.patch(`${process.env.REACT_APP_API_URL}/drives/apply-drive/`, {
+      st_id: window.localStorage.getItem("USER_ID")
     })
     .then((response) => {
       console.log(response.data);
+      const appliedDriveIds = response.data.map(obj => obj.drive);
+      setAppliedDrives(appliedDriveIds);
     })
     .catch((error) => {
       console.error("Error:", error);
     });
-  }, []);
+}, []);
 
+useEffect(() => {
+  const filteredDrives = drivelist.filter(drive => appliedDrives.includes(drive.drive_id));
+  setApplied(filteredDrives);
+}, [appliedDrives, drivelist]);
+  
+ 
 
   return (
     <div className="main">

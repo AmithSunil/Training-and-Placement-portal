@@ -8,7 +8,6 @@ const Profile = ({}) => {
   useEffect(() => {
     setProfile(JSON.parse(window.localStorage.getItem("PROFILE")));
   }, []);
-  console.log(profile);
 
   // id:"1",
   // name: "Kshiti Ghelani",
@@ -36,13 +35,14 @@ const Profile = ({}) => {
   };
 
   const handleSaveProfile = () => {
+    console.log("Saving profile:", profile);
     // Save the updated profile data
     // You can use axios.put() or any other method to update the profile data
     axios
       .patch(`${process.env.REACT_APP_API_URL}/user/login/`, profile)
       .then((response) => {
-        console.log(response);
-        window.localStorage.setItem("PROFILE", JSON.stringify(profile));
+        console.log("RESPONSe",response.data.data);
+        window.localStorage.setItem("PROFILE", JSON.stringify(response.data.data));
         setEditMode(false);
       })
       .catch((error) => {
@@ -146,10 +146,10 @@ const Profile = ({}) => {
                   <p>{profile.backlogs}</p>
                 ) : (
                   <input
-                    type="text"
+                    type="number"
                     value={profile.backlogs}
                     onChange={(e) =>
-                      setProfile({ ...profile, backologs: e.target.value })
+                      setProfile({ ...profile, backlogs: e.target.value })
                     }
                   />
                 )}
@@ -185,7 +185,7 @@ const Profile = ({}) => {
                   <p>{profile.gpa}</p>
                 ) : (
                   <input
-                    type="text"
+                    type="number"
                     value={profile.gpa}
                     onChange={(e) =>
                       setProfile({ ...profile, gpa: e.target.value })

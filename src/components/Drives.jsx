@@ -15,8 +15,8 @@ const Drives = () => {
     axios
     .post(`${apiUrl}/drives/apply-drive/`, 
     {
-      st_id : "ea3e6612-cba6-4197-8509-788b6706b521",
-      drive: "1bb07f0c-605c-436a-ace2-4d57ae1287b8"
+      st_id : window.localStorage.getItem("USER_ID"),
+      drive: applied
   })
     .then((response) => {
        console.log(response.data);

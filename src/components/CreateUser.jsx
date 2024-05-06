@@ -35,12 +35,13 @@ const CreateUser = () => {
 
     console.log("Creating user:", user);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/admin/create`, user)
+      .post(`${process.env.REACT_APP_API_URL}/user/admin/`, user)
       .then((response) => {
         notify("User Created Successfully!");
         console.log("User created:", response.data);
         // Reset user state after successful creation
         setUser({
+          username: "",
           email: "",
           first_name: "",
           last_name: "",
