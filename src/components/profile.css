@@ -89,4 +89,7 @@
     /* border: 2px solid rgb(63, 49, 49);
     background-color: #6b7aa8; */
   }
-  
+
+.col-md-6 input[type="text"]{
+  min-width: 320px;
+}

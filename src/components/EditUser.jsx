@@ -98,9 +98,10 @@ const EditUsers = () => {
         pauseOnHover
         theme="light"
       />
-      <h2 className="edit-users-heading">Edit User</h2>
+      
       {!editing && (
         <div className="search-bar">
+          <h2 className="edit-users-heading">Edit User</h2>
           <label className="search-label">Enter Username:</label>
           <input
             type="text"
@@ -114,6 +115,7 @@ const EditUsers = () => {
       )}
       {editing && (
         <form className="edit-form">
+          <h2 className="edit-users-heading">Edit User</h2>
           <label>Email:</label>
           <input
             type="email"
@@ -165,8 +167,11 @@ const EditUsers = () => {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
+          <div className="edit-user-form-buttons">
           <Button type="button" onClick={handleSubmit}>Update User</Button>
           <Button type="button" onClick={handleDelete}>Delete User</Button>
+          </div>
+          
         </form>
       )}
     </div>
