@@ -3,31 +3,35 @@ import "./applicants.css";
 import axios from "axios";
 
 const Applicants = (id) => {
-  const [applicants,setApplicants] = useState([
-    { id: 1, first_name: "Mark", last_name: "Otto", email: "@mdo" },
-    { id: 2, first_name: "John", last_name: "Doe", email: "johndoe@example.com" },
-    { id: 3, first_name: "Jane", last_name: "Smith", email: "janesmith@example.com" },
-    { id: 4, first_name: "Alice", last_name: "Johnson", email: "alicejohnson@example.com" },
-    { id: 5, first_name: "Bob", last_name: "Williams", email: "bobwilliams@example.com" },
-    { id: 6, first_name: "Sarah", last_name: "Davis", email: "sarahdavis@example.com" }
-  ])
+  const [applicants,setApplicants] = useState([])
 
 
-  // `${process.env.REACT_APP_API_URL}/drives/apply-drive/`
+
+
+  const getApplicants = async () => {
+    
+    const user = await axios
+    .patch("https://tpc-backend.onrender.com/drives/apply-drive/", 
+    {
+      drive_id: id.id
+    }
+   
+  )
+    .then((response) => {
+      console.log(response);
+      setApplicants(response.data)
+    })
+    .catch((error) => {
+
+    });
+    return user
+
+  }
 
   useEffect(() => {
-    axios
-      .get("drives/apply-drive/?st_id=ea3e6612-cba6-4197-8509-788b6706b521", 
-    {
-      params:{drive_id: id}
-    } 
-    )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
- 
-      });
+    getApplicants();
+    console.log("id",id)
+   
   }, []);
   
 
@@ -43,10 +47,11 @@ const Applicants = (id) => {
           </tr>
         </thead>
         <tbody>
-          {applicants.map((applicant) => (
+          {applicants.map((applicant,ind) => (
             <tr key={applicant.id}>
-              <th scope="row">{applicant.id}</th>
+              <th scope="row">{ind+1}</th>
               <td>{applicant.first_name+" "+applicant.last_name}</td>
+              <td>{applicant.department}</td>
               <td>{applicant.email}</td>
             </tr>
           ))}

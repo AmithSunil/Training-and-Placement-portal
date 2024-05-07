@@ -12,6 +12,7 @@ const Drives = () => {
   const [show, setShow] = useState(false);
   const [applied, setApplied] = useState("");
   const handleClose = () => {
+    console.log()
     axios
     .post(`${apiUrl}/drives/apply-drive/`, 
     {
