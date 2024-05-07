@@ -44,6 +44,7 @@ const Login = ({ setProfile}) => {
         notify("Login Successful");
         window.localStorage.setItem("PROFILE",JSON.stringify(response.data.data));
         window.localStorage.setItem("USER_ID", response.data.data.id);
+        console.log(response.data.data.id);
         if (response.data.data.is_superuser === true) {
           console.log("admin");
           window.localStorage.setItem("USER", "admin");

@@ -12,9 +12,16 @@ const Applicants = (id) => {
     { id: 6, first_name: "Sarah", last_name: "Davis", email: "sarahdavis@example.com" }
   ])
 
+
+  // `${process.env.REACT_APP_API_URL}/drives/apply-drive/`
+
   useEffect(() => {
     axios
-      .patch(`${process.env.REACT_APP_API_URL}/drives/apply-drive/`, {drive_id: id})
+      .get("drives/apply-drive/?st_id=ea3e6612-cba6-4197-8509-788b6706b521", 
+    {
+      params:{drive_id: id}
+    } 
+    )
       .then((response) => {
         console.log(response);
       })

@@ -43,6 +43,7 @@ const Drives = () => {
     axios.get(`${apiUrl}/drives/drive/`)
       .then((response) => {
         setDrives(response.data);
+        console.log(response.data);
         setLoading(false);
       })
       .catch((error) => {
