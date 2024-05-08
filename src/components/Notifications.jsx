@@ -4,12 +4,15 @@ import axios from 'axios';
 
 const Notifications = () => {
 
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
         axios
           .get(`${process.env.REACT_APP_API_URL}/user/notification/`)
           .then((response) => {
             setNotifications((response.data).reverse());
             console.log(response.data);
+            setLoaded(true)
           })
           .catch((error) => {
             console.log(error);
@@ -48,7 +51,7 @@ const Notifications = () => {
                 <h1>NOTIFICATIONS</h1>
             </div>
             <div className='notifications'>
-                {notifications.map((notification, index) => (
+                {loaded && notifications.map((notification, index) => (
                     <div key={index} className='notification'>
                         <h3>{notification.subjects}</h3>
                         <p>{notification.created_at.split("-").reverse().join("-")}</p>

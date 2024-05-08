@@ -6,6 +6,9 @@ const AppliedDrives = () => {
   const [applied, setApplied] = useState([]);
   const [appliedDrives, setAppliedDrives] = useState([]);
   const [drivelist, setdrivelist] = useState([]);
+  const [loaded, setLoaded] = useState(true);
+  
+  
   console.log("env",process.env.REACT_APP_API_URL)
   useEffect(() => {
     axios
@@ -27,6 +30,7 @@ const AppliedDrives = () => {
         console.log(response.data);
         const appliedDriveIds = response.data.map((obj) => obj.drive);
         setAppliedDrives(appliedDriveIds);
+        setLoaded(true);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -46,7 +50,7 @@ const AppliedDrives = () => {
         <h1>APPLIED DRIVES</h1>
       </div>
       <div className="applied-body">
-        {applied.map((drive, index) => (
+        {loaded && applied.map((drive, index) => (
           <div key={index} className="drive-card">
             <h6>Company Name: {drive.name}</h6>
             <h6>Position: {drive.position}</h6>
