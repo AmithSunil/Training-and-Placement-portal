@@ -8,7 +8,7 @@ const Notifications = () => {
         axios
           .get(`${process.env.REACT_APP_API_URL}/user/notification/`)
           .then((response) => {
-            setNotifications(response.data);
+            setNotifications((response.data).reverse());
             console.log(response.data);
           })
           .catch((error) => {

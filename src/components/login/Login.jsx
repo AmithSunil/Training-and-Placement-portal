@@ -6,16 +6,13 @@ import "boxicons/css/boxicons.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const notify = (text) => toast(text);
 
-const Login = ({ setProfile}) => {
-
+const Login = ({ setProfile }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-  const [result,setResult] = useState({});
+  const [result, setResult] = useState({});
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -33,8 +30,7 @@ const Login = ({ setProfile}) => {
     //setting user type
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/user/login/`,
-      {
+      .post(`${process.env.REACT_APP_API_URL}/user/login/`, {
         email: username,
         password: password,
       })
@@ -42,7 +38,10 @@ const Login = ({ setProfile}) => {
         console.log(response.data.data);
         setResult(response.data.data);
         notify("Login Successful");
-        window.localStorage.setItem("PROFILE",JSON.stringify(response.data.data));
+        window.localStorage.setItem(
+          "PROFILE",
+          JSON.stringify(response.data.data)
+        );
         window.localStorage.setItem("USER_ID", response.data.data.id);
         console.log(response.data.data.id);
         if (response.data.data.is_superuser === true) {
@@ -50,15 +49,14 @@ const Login = ({ setProfile}) => {
           window.localStorage.setItem("USER", "admin");
           navigate("/dashboard/create drive");
         } else {
-        window.localStorage.setItem("USER", "user");
-        navigate("/dashboard/drives");
-      }
-      }).catch((error) => {
+          window.localStorage.setItem("USER", "user");
+          navigate("/dashboard/drives");
+        }
+      })
+      .catch((error) => {
         notify("Login Failed");
         console.log(error);
       });
-
-      
 
     // axios
     //   .get(`${process.env.REACT_APP_API_URL}/user/login/`,
@@ -76,7 +74,7 @@ const Login = ({ setProfile}) => {
 
   return (
     <div className="sign-in-main">
-            <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={1000}
         hideProgressBar
@@ -113,6 +111,16 @@ const Login = ({ setProfile}) => {
               onChange={handlePasswordChange}
             />
             <i className="bx bx-lock-alt"></i>
+            <p className="forgot-password text-right">
+              Forgot{" "}
+              <a
+                href={process.env.REACT_APP_FORGOT_PASSWORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                password?
+              </a>{" "}
+            </p>
           </div>
           <div className="d-grid">
             <button type="submit" className="btn btn-primary">

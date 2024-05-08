@@ -41,7 +41,8 @@
   
   .row-2 {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-left: 20px;
     /* background-color: rgb(32, 121, 200); */
   }
@@ -84,8 +85,8 @@
   
   .profile-tab {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
+
     /* border: 2px solid rgb(63, 49, 49);
     background-color: #6b7aa8; */
   }

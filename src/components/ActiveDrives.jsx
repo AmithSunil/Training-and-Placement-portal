@@ -19,7 +19,7 @@ const ActiveDrives = () => {
     .then((response) => {
       console.log(response.data);
         setShowApplicants(
-          response.data.reduce((acc, item) => {
+          (response.data.reduce((acc, item) => {
             acc[item.drive_id] = {
               drive_id: item.drive_id,
               show: false,
@@ -38,7 +38,7 @@ const ActiveDrives = () => {
             };
             return acc;
           }, {})
-        );
+        )).reverse();
       })
       .catch((error) => {
         // console.log(error);
@@ -95,11 +95,11 @@ const ActiveDrives = () => {
       )
       .then((response) => {
         console.log(response);
-        notify("User Updated Successfully!");
+        notify("Drive Updated Successfully!");
       })
       .catch((error) => {
         console.log(error);
-        notify("Error Updating User!");
+        notify("Error Updating Drive!");
       });
 
     setEditing(false);

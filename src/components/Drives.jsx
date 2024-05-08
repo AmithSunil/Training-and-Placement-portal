@@ -6,11 +6,16 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Drives = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [show, setShow] = useState(false);
   const [applied, setApplied] = useState("");
+  const notify = (text) => toast(text);
+
   const handleClose = () => {
     console.log()
     axios
@@ -21,9 +26,11 @@ const Drives = () => {
   })
     .then((response) => {
        console.log(response.data);
-    })
+        notify("Applied Successfully");
+      })
     .catch((error) => {
       // console.log(error);
+      notify("Application Failed");
     });
 
     setShow(false)
@@ -43,7 +50,7 @@ const Drives = () => {
   useEffect(() => {
     axios.get(`${apiUrl}/drives/drive/`)
       .then((response) => {
-        setDrives(response.data);
+        setDrives(response.data.reverse());
         console.log(response.data);
         setLoading(false);
       })
@@ -59,6 +66,19 @@ const Drives = () => {
 
   return (
     <div className="drive">
+            <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

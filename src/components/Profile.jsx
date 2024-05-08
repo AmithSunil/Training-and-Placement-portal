@@ -41,8 +41,11 @@ const Profile = ({}) => {
     axios
       .patch(`${process.env.REACT_APP_API_URL}/user/login/`, profile)
       .then((response) => {
-        console.log("RESPONSe",response.data.data);
-        window.localStorage.setItem("PROFILE", JSON.stringify(response.data.data));
+        console.log("RESPONSe", response.data.data);
+        window.localStorage.setItem(
+          "PROFILE",
+          JSON.stringify(response.data.data)
+        );
         setEditMode(false);
       })
       .catch((error) => {
@@ -92,130 +95,153 @@ const Profile = ({}) => {
         <div class="row-2">
           <div class="tab-content profile-tab" id="myTabContent">
             <div class="row">
-              <div class="col-md-6">
-                <label>Password:</label>
-              </div>
-              <div class="col-md-6">
-                {!editMode ? (
-                  <p>{profile.made_password}</p>
-                ) : (
-                  <input
-                    type="text"
-                    value={profile.made_password}
-                    onChange={(e) =>
-                      setProfile({ ...profile, made_password: e.target.value })
-                    }
-                  />
+              <div class="col-md-6" style={{ width: "600px" }}>
+                {editMode && (
+                  <div>
+                    <label>First Name:</label>
+                    <input
+                      type="text"
+                      value={profile.first_name}
+                      onChange={(e) =>
+                        setProfile({ ...profile, first_name: e.target.value })
+                      }
+                    />
+                  </div>
                 )}
-              </div>
-              <div class="col-md-6">
-                <label>Department:</label>
-              </div>
-              <div class="col-md-6">
+                {editMode && (
+                  <div>
+                    <label>Last Name:</label>
+                    <input
+                      type="text"
+                      value={profile.last_name}
+                      onChange={(e) =>
+                        setProfile({ ...profile, last_name: e.target.value })
+                      }
+                    />
+                  </div>
+                )}
+
                 {!editMode ? (
-                  <p>{profile.department}</p>
+                  <div>
+                    <label>Department:</label>
+                    <p>{profile.department}</p>
+                  </div>
                 ) : (
-                  <select
-                    value={profile.department}
-                    onChange={(e) =>
-                      setProfile({ ...profile, department: e.target.value })
-                    }
-                  >
-                    <option value="Computer Science Engineering">
-                      Computer Science Engineering
-                    </option>
-                    <option value="Electronics And Communication">
-                      Electronics And Communication
-                    </option>
-                    <option value="Mechanical Engineering">
-                      Mechanical Engineering
-                    </option>
-                    <option value="Electrical And Electronics Engineering">
-                      Electrical And Electronics Engineering
-                    </option>
-                  </select>
+                  <div>
+                    <label>Department:</label>
+
+                    <select
+                      value={profile.department}
+                      onChange={(e) =>
+                        setProfile({ ...profile, department: e.target.value })
+                      }
+                    >
+                      <option value="Computer Science Engineering">
+                        Computer Science Engineering
+                      </option>
+                      <option value="Electronics And Communication">
+                        Electronics And Communication
+                      </option>
+                      <option value="Mechanical Engineering">
+                        Mechanical Engineering
+                      </option>
+                      <option value="Electrical And Electronics Engineering">
+                        Electrical And Electronics Engineering
+                      </option>
+                    </select>
+                  </div>
+                )}
+                {!editMode ? (
+                  <div>
+                    <label>Backlogs:</label>
+                    <p>{profile.backlogs}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <label>Backlogs:</label>
+                    <input
+                      type="number"
+                      value={profile.backlogs}
+                      onChange={(e) =>
+                        setProfile({ ...profile, backlogs: e.target.value })
+                      }
+                    />
+                  </div>
+                )}
+                {!editMode ? (
+                  <div >
+                    <label >Backlog History:</label>
+                    <p>{profile.backlog_history ? "YES" : "NO"}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <label style={{ width: "100%" }}>Backlog History:</label>
+                    <select
+                      style={{ width: "100%" }}
+                      value={profile.backlog_history ? "YES" : "NO"}
+                      onChange={(e) =>
+                        setProfile({
+                          ...profile,
+                          backlog_history: e.target.value === "YES",
+                        })
+                      }
+                    >
+                      <option value={"YES"}>YES</option>
+                      <option value={"NO"}>NO</option>
+                    </select>
+                  </div>
+                )}
+                {!editMode ? (
+                  <div>
+                    <label>CGPA:</label>
+                    <p>{profile.gpa}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <label>CGPA:</label>
+
+                    <input
+                      type="number"
+                      value={profile.gpa}
+                      onChange={(e) =>
+                        setProfile({ ...profile, gpa: e.target.value })
+                      }
+                    />
+                  </div>
+                )}
+                {!editMode ? (
+                  <div>
+                    <label>Email:</label>
+                    <p>{profile.email}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <label>Email:</label>
+
+                    <input
+                      type="text"
+                      value={profile.email}
+                      onChange={(e) =>
+                        setProfile({ ...profile, email: e.target.value })
+                      }
+                    />
+                  </div>
                 )}
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Backlogs:</label>
-              </div>
-              <div class="col-md-6">
-                {!editMode ? (
-                  <p>{profile.backlogs}</p>
-                ) : (
-                  <input
-                    type="number"
-                    value={profile.backlogs}
-                    onChange={(e) =>
-                      setProfile({ ...profile, backlogs: e.target.value })
-                    }
-                  />
-                )}
-              </div>
-              <div class="col-md-6">
-                <label>Backlog History:</label>
-              </div>
-              <div class="col-md-6">
-                {!editMode ? (
-                  <p>{profile.backlog_history ? "YES" : "NO"}</p>
-                ) : (
-                  <select
-                    value={profile.backlog_history ? "YES" : "NO"}
-                    onChange={(e) =>
-                      setProfile({
-                        ...profile,
-                        backlog_history: e.target.value === "YES",
-                      })
-                    }
-                  >
-                    <option value={"YES"}>YES</option>
-                    <option value={"NO"}>NO</option>
-                  </select>
-                )}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>CGPA:</label>
-              </div>
-              <div class="col-md-6">
-                {!editMode ? (
-                  <p>{profile.gpa}</p>
-                ) : (
-                  <input
-                    type="number"
-                    value={profile.gpa}
-                    onChange={(e) =>
-                      setProfile({ ...profile, gpa: e.target.value })
-                    }
-                  />
-                )}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Email:</label>
-              </div>
-              <div class="col-md-6">
-                {!editMode ? (
-                  <p>{profile.email}</p>
-                ) : (
-                  <input
-                    type="text"
-                    value={profile.email}
-                    onChange={(e) =>
-                      setProfile({ ...profile, email: e.target.value })
-                    }
-                  />
-                )}
-              </div>
-            </div>
-            <div class="row"></div>
-            <div class="row">
-              <div class="col-md-6"></div>
-            </div>
+              <br />
+              <br />
+              <a
+              href={process.env.REACT_APP_CHANGE_PASSWORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+              <input
+                type="button"
+                class="profile-edit-btn"
+                name="btnAddMore"
+                value="Change Password" 
+              /></a>
           </div>
         </div>
       </form>
