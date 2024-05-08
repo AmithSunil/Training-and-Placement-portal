@@ -14,9 +14,11 @@ const Drives = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [show, setShow] = useState(false);
   const [applied, setApplied] = useState("");
+ 
   const notify = (text) => toast(text);
 
   const handleClose = () => {
+
     console.log()
     axios
     .post(`${apiUrl}/drives/apply-drive/`, 
@@ -37,10 +39,27 @@ const Drives = () => {
   };
 
   const handleShow = () => {
-    
-    setShow(true);
-
+    const appliedDrive = drives.find(drive => drive.drive_id === applied);
+    console.log(applied)
+    if (appliedDrive) {
+      if (JSON.parse(window.localStorage.getItem("PROFILE")).gpa >= appliedDrive.gpa_limit 
+      && JSON.parse(window.localStorage.getItem("PROFILE")).backlogs <= appliedDrive.backlog_limit
+      && JSON.parse(window.localStorage.getItem("PROFILE")).backlog_history === appliedDrive.backlog_history
+    ) {
+        setShow(true);
+      } else {
+        notify("Requirements not met");
+      }
+    } else {
+      notify("Drive not found");
+    }
   };
+  
+
+
+  const handleCloseWithout = () => {
+    setShow(false);
+  }
 
   const [drives, setDrives] = useState([]);
 
@@ -80,13 +99,13 @@ const Drives = () => {
       />
 
       <>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+        <Modal show={show} onHide={handleCloseWithout}>
+          <Modal.Header >
             <Modal.Title>Hey</Modal.Title>
           </Modal.Header>
           <Modal.Body>Are you sure you want to apply?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={handleCloseWithout}>
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
@@ -100,9 +119,9 @@ const Drives = () => {
         <h1>DRIVES</h1>
       </div>
       <div className="drive-body">
-        {
-          drives.length === 1 ? null :
-          drives.map((drive, index) => (
+        {drives.length === 1 ? null :
+          drives.map((_, index) => (
+            drives[index].is_active &&
             <DriveCard
               key={index}
               detail={drives[index]}

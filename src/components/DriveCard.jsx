@@ -5,9 +5,11 @@ import logo from "./logo.svg";
 import { Button } from "react-bootstrap";
 
 const DriveCard = ({ detail, buttonClicked, setApplied }) => {
+ 
   const handleClick = () => {
+    setApplied(detail.drive_id);
+     // Set the selected drive details to be shown in the modal
     buttonClicked(); // Call the function received from Drives component to show the modal
-    setApplied(detail.drive_id); // Set the selected drive details to be shown in the modal
   };
 
   return (
@@ -28,7 +30,7 @@ const DriveCard = ({ detail, buttonClicked, setApplied }) => {
         <h6>Backlog Limit:{detail.backlog_limit}</h6>
         <h6>
           Backlog history:{" "}
-          {String(detail.backlog_history) ? "Allowed" : "Not Allowed"}
+          {String(detail.backlog_history)  === "true" ? "Allowed" : "Not Allowed"}
         </h6>
         <h6>Last date to Apply:{detail.lastdate.split("-").reverse().join("-")}</h6>
         <h6>Drive date:{detail.drivedate.split("-").reverse().join("-")}</h6>
