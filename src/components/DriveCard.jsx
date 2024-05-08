@@ -30,8 +30,8 @@ const DriveCard = ({ detail, buttonClicked, setApplied }) => {
           Backlog history:{" "}
           {String(detail.backlog_history) ? "Allowed" : "Not Allowed"}
         </h6>
-        <h6>Last date to Apply:{detail.lastdate}</h6>
-        <h6>Drive date:{detail.drivedate}</h6>
+        <h6>Last date to Apply:{detail.lastdate.split("-").reverse().join("-")}</h6>
+        <h6>Drive date:{detail.drivedate.split("-").reverse().join("-")}</h6>
         <p>{detail.description}</p>
         </div>
         <div className="button">

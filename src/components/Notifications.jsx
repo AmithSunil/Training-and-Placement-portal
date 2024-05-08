@@ -51,7 +51,7 @@ const Notifications = () => {
                 {notifications.map((notification, index) => (
                     <div key={index} className='notification'>
                         <h3>{notification.subjects}</h3>
-                        <p>{notification.created_at}</p>
+                        <p>{notification.created_at.split("-").reverse().join("-")}</p>
                         <p>{notification.message}</p>
                      </div>
                 ))}

@@ -48,10 +48,10 @@ const AppliedDrives = () => {
       <div className="applied-body">
         {applied.map((drive, index) => (
           <div key={index} className="drive-card">
-            <h6>Position: {drive.position}</h6>
             <h6>Company Name: {drive.name}</h6>
+            <h6>Position: {drive.position}</h6>
             <div className="status"></div>
-            <h6>Drive Date: {drive.drivedate}</h6>
+            <h6>Drive Date: {drive.drivedate.split("-").reverse().join("-")}</h6>
           </div>
         ))}
       </div>

@@ -198,14 +198,13 @@ const ActiveDrives = () => {
               <div className="details">
                 <h6>Title: {drive.name}</h6>
                 <h6>Position: {drive.position}</h6>
-                <h6>Drive Date: {drive.drivedate}</h6>
                 <h6>Package: {drive.lpa} lpa</h6>
                 <h6>Location: {drive.location}</h6>
                 <h6>Skills:{drive.skills}</h6>
                 <h6>Backlogs Allowed: {drive.backlog_limit}</h6>
                 <h6>Backlog History:{drive.backlog_history? "Yes":"No"}</h6>
-                <h6>Last Date: {drive.lastdate}</h6>
-                <h6>Drive Date: {drive.drivedate}</h6>
+                <h6>Last Date: {drive.lastdate.split("-").reverse().join("-")}</h6>
+                <h6>Drive Date: {drive.drivedate.split("-").reverse().join("-")}</h6>
                 <h6>Description:{drive.description}</h6>
               </div>
 
