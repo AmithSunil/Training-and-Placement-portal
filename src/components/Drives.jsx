@@ -24,7 +24,7 @@ const Drives = () => {
     .post(`${apiUrl}/drives/apply-drive/`, 
     {
       st_id : window.localStorage.getItem("USER_ID"),
-      drive: applied
+      drive: window.localStorage.getItem("APPLIED")
   })
     .then((response) => {
        console.log(response.data);
@@ -39,8 +39,8 @@ const Drives = () => {
   };
 
   const handleShow = () => {
-    const appliedDrive = drives.find(drive => drive.drive_id === applied);
-    console.log(applied)
+
+    const appliedDrive = drives.find(drive => drive.drive_id === window.localStorage.getItem("APPLIED"));
     if (appliedDrive) {
       if (JSON.parse(window.localStorage.getItem("PROFILE")).gpa >= appliedDrive.gpa_limit 
       && JSON.parse(window.localStorage.getItem("PROFILE")).backlogs <= appliedDrive.backlog_limit

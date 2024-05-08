@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 const DriveCard = ({ detail, buttonClicked, setApplied }) => {
  
   const handleClick = () => {
+    window.localStorage.setItem("APPLIED", detail.drive_id);
     setApplied(detail.drive_id);
      // Set the selected drive details to be shown in the modal
     buttonClicked(); // Call the function received from Drives component to show the modal
